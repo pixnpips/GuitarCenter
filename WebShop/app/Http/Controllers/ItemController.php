@@ -41,7 +41,7 @@ class ItemController extends Controller
         //
         $request->validate([
             'title' => 'required',
-            'price' => 'required',
+            'price' => 'required|numericValue()',
             'img1' => 'required',
             'pcs' => 'required',
         ]);
