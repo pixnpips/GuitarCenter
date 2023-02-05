@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-{{--Originale Datei --}}
+
+{{--Originale Datei--}}
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -17,6 +18,7 @@
         <!-- Styles -->
         @livewireStyles
     </head>
+
     <body class="font-sans antialiased">
         <x-jet-banner />
 
@@ -32,31 +34,20 @@
                 </header>
             @endif
 
+{{--            komischer Button der uns zu unserer Item View URL führt--}}
+
+            <button class="button-blue"><a href="http://127.0.0.1:8000/items" class="button-blue">Your Items</a></button>
+
             <!-- Page Content -->
             <main>
+{{--                Das hier im Slot sind die Verlinkungen zu Doc, Laracast, etc aus dem Dashboard--}}
                 {{ $slot }}
+{{--                Das hier ist die Item Übersicht--}}
             </main>
         </div>
-
         @stack('modals')
 
         @livewireScripts
     </body>
 
-
-{{--Die aus dem CRUD Tutorial--}}
-
-{{--    <html lang="en">--}}
-{{--        <head>--}}
-{{--            <meta charset="UTF-8">--}}
-{{--            <meta name="viewport" content="width=device-width, initial-scale=1.0">--}}
-{{--            <meta http-equiv="X-UA-Compatible" content="ie=edge">--}}
-{{--            <title>Laravel 5.8 CRUD Example Tutorial</title>--}}
-{{--            <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">--}}
-{{--        </head>--}}
-{{--    <body>--}}
-{{--    <div class="container">--}}
-{{--        @yield('content')--}}
-{{--    </div>--}}
-{{--    </body>--}}
 </html>

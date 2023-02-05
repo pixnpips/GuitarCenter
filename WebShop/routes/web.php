@@ -14,11 +14,14 @@ use App\Http\Controllers\ItemController;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('items', ItemController::class);
+
+
 
 Route::middleware([
     'auth:sanctum',
@@ -28,4 +31,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::resource('items', ItemController::class);
+
 });
