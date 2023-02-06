@@ -34,12 +34,6 @@
                 <td>{{ $item->price }}</td>
                 <td>{{ $item->pcs}}</td>
                 <td>{{ $item->desc }}</td>
-
-            </tr>
-            <tr>
-                <td>{{ $item->img1 }}</td>
-                <td>{{ $item->img2 }}</td>
-                <td>{{ $item->img3}}</td>
                 <td>
                     <a class="btn btn-info" href="{{ route('items.show',$item->id) }}">Show</a>
                     <a class="btn btn-primary" href="{{ route('items.edit',$item->id) }}">Edit</a>
@@ -49,7 +43,13 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
-            </tr>
+
+{{--            </tr>--}}
+{{--            <tr>--}}
+{{--                <td>{{ $item->img1 }}</td>--}}
+{{--                <td>{{ $item->img2 }}</td>--}}
+{{--                <td>{{ $item->img3}}</td>--}}
+{{--            </tr>--}}
         @endforeach
     </table>
 

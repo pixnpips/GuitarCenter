@@ -27,6 +27,7 @@ class CustomerController extends Controller
     public function create()
     {
         //
+        return view('customers.create');
     }
 
     /**
@@ -37,7 +38,25 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//----------------Hier haben wir konventionell neue Customer Einträge erstellt
+        $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+        Customer::create($request->all());
+        return redirect()->route('customers.index')->with('success','Customer created successfully.');
+
+
+        //----------------------------Für Order Klasse-------------------
+
+//-----------------------Hier haben wir einen One to many Beziehung auf die User Klasse die wir für Bestellungen nutzen können
+//        $validated = $request->validate([
+//            'message' => 'required|string|max:255',
+//        ]);
+//
+//        $request->user()->orders()->create($validated);
+//
+//        return redirect(route('orders.index'));
+
     }
 
     /**

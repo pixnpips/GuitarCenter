@@ -15,7 +15,13 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
+            $table->string('message');
             $table->timestamps();
+
+            //-------------Für Orders:
+
+            //Hier setzen wir die one to many Beziehung in der Datenbank
+            //            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
         });
     }
 

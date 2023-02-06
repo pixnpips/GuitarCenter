@@ -59,6 +59,19 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
 
     /**
+     * Achtung!!! Hier definieren wir eine one to many Beziehung
+     * Siehe Customer Class bei Save
+     *
+     *  public function orders()
+        {
+        return $this->hasMany(Order::class);
+        }
+     *
+     *
+     */
+
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
