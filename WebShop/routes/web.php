@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,7 @@ Route::get('/', function () {
 });
 
 
-
+//   ----------------- Diese Routen können nur von angemeldeten Usern betreten werden!!
 
 Route::middleware([
     'auth:sanctum',
@@ -32,6 +33,10 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+
+    //----------------------hier sind unsere Default Ressource Controller Routen
+
     Route::resource('items', ItemController::class);
+    Route::resource('customers', CustomerController::class);
 
 });
