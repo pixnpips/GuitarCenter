@@ -34,9 +34,6 @@
                 </header>
             @endif
 
-{{--            komischer Button der uns zu unserer Item View URL führt--}}
-
-            <button class="button-blue"><a href="http://127.0.0.1:8000/items" class="button-blue">Your Items</a></button>
 
             <!-- Page Content -->
             <main>

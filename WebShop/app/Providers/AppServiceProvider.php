@@ -24,8 +24,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        Blade::directive('x-primary-button', function ($expression) {
-            return "<button class='btn btn-primary'>{$expression}</button>";
-        });
     }
 }

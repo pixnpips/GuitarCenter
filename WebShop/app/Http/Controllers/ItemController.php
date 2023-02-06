@@ -41,9 +41,9 @@ class ItemController extends Controller
         //
         $request->validate([
             'title' => 'required',
-            'price' => 'required|numericValue()',
+            'price' => 'required|numeric',
             'img1' => 'required',
-            'pcs' => 'required',
+            'pcs' => 'required|numeric',
         ]);
 
         item::create($request->all());

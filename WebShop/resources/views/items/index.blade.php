@@ -9,6 +9,9 @@
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('items.create') }}"> Create New Item</a>
             </div>
+            <div class="pull-right">
+                <a class="btn btn-primary" href="{{ route('dashboard') }}"> Back</a>
+            </div>
         </div>
     </div>
 

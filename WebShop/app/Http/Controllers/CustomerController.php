@@ -16,7 +16,7 @@ class CustomerController extends Controller
     {
         //
         return view('customers.index');
-//        return 'hallohallo';
+;
     }
 
     /**
