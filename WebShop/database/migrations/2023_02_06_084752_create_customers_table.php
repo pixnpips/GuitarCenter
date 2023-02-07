@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('postal');
             $table->string('email');
             $table->date('bday');
-            $table->string('password');
+            $table->string('password1');
             $table->timestamps();
 
             //-------------Für Orders:

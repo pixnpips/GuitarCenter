@@ -12,6 +12,7 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
@@ -45,7 +46,7 @@ class CustomerController extends Controller
             'postal' => 'required|numeric|max:255',
             'email' => 'required',
             'bday' => 'required',
-            'password' => 'required'
+            'password1' => 'required'
         ]);
 
 
@@ -99,6 +100,18 @@ class CustomerController extends Controller
     public function update(Request $request, Customer $customer)
     {
         //
+        $request->validate([
+            'name' => 'required|alpha_dash',
+            'street' => 'required|alpha_dash',
+            'postal' => 'required|numeric|max:255',
+            'email' => 'required',
+            'bday' => 'required',
+            'password' => 'required'
+        ]);
+
+        $customer->update($request->all());
+
+        return redirect()->route('posts.index')->with('success','Post updated successfully');
     }
 
     /**
