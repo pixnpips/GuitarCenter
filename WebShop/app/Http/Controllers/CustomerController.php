@@ -85,9 +85,10 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit(Customer $Customer)
     {
         //
+        return view('customers.edit',compact('Customer'));
     }
 
     /**
@@ -106,12 +107,11 @@ class CustomerController extends Controller
             'postal' => 'required|numeric|max:255',
             'email' => 'required',
             'bday' => 'required',
-            'password' => 'required'
+            'password1' => 'required'
         ]);
 
         $customer->update($request->all());
-
-        return redirect()->route('posts.index')->with('success','Post updated successfully');
+        return redirect()->route('customers.index')->with('success','Customer updated successfully');
     }
 
     /**
@@ -123,5 +123,7 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         //
+        $customer->delete();
+        return redirect()->route('customers.index')->with('success','Customer deleted successfully');
     }
 }
