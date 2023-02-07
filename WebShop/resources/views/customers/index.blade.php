@@ -10,7 +10,6 @@
         <div>
             <h2>{{$Customer->date}}</h2>
         </div>
-
     </div>
     @endforeach
 </x-app-layout>

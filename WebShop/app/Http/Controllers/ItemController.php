@@ -46,6 +46,7 @@ class ItemController extends Controller
             'pcs' => 'required|numeric',
         ]);
 
+
         item::create($request->all());
         return redirect()->route('items.index')->with('success','Item created successfully.');
     }

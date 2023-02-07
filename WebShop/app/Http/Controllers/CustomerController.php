@@ -15,8 +15,8 @@ class CustomerController extends Controller
     public function index()
     {
         //
-        return view('customers.index');
-;
+        $customers= Customer::all();
+        return view('customers.index', compact('customers'));
     }
 
     /**
@@ -38,10 +38,17 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-//----------------Hier haben wir konventionell neue Customer Einträge erstellt
+//----------------Hier validieren wir unsere DB Einträge
         $request->validate([
-            'message' => 'required|string|max:255',
+            'name' => 'required|alpha_dash',
+            'street' => 'required|alpha_dash',
+            'postal' => 'required|numeric|max:255',
+            'email' => 'required',
+            'bday' => 'required',
+            'password' => 'required'
         ]);
+
+
         Customer::create($request->all());
         return redirect()->route('customers.index')->with('success','Customer created successfully.');
 
@@ -68,6 +75,7 @@ class CustomerController extends Controller
     public function show(Customer $customer)
     {
         //
+
     }
 
     /**

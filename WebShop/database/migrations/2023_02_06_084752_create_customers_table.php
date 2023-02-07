@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('message');
+            $table->string('name');
+            $table->string('street');
+            $table->string('postal');
+            $table->string('email');
+            $table->date('bday');
+            $table->string('password');
             $table->timestamps();
 
             //-------------Für Orders:
