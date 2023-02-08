@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +40,6 @@ Route::middleware([
 
     Route::resource('items', ItemController::class);
     Route::resource('customers', CustomerController::class);
-
+    Route::resource('orders', OrderController::class);
+    Route::resource('categories', CategoryController::class);
 });
