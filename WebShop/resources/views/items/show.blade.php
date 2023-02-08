@@ -1,25 +1,14 @@
-@extends('layouts.itemlayout')
-@section('content')
-
+<x-app-layout>
     <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Show Post</h2>
+        <div class="flex-row justify-between col-lg-12 margin-tb">
+            <div >
+                <strong>Item Number:</strong> {{$item->id}}  <strong>Model:</strong> {{ $item->title }}
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('items.index') }}"> Back</a>
-            </div>
+
         </div>
     </div>
 
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Title:</strong>
-                {{ $item->title }}
-            </div>
-        </div>
-
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Description:</strong>
@@ -59,6 +48,10 @@
                 {{ $item->pcs}}
             </div>
         </div>
+        <div>
+            <a href="{{ route('items.index') }}"> <x-jet-button>Back</x-jet-button></a>
+            <a href="{{route('items.edit',$item->id)}}"><x-jet-button class="mt-4" >Edit</x-jet-button> </a>
+        </div>
 
     </div>
-@endsection
+</x-app-layout>

@@ -40,8 +40,9 @@
                    class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
             >
             @error('password2') <span class="error">{{ $message }}</span> @enderror
-
-            <x-jet-button type="submit" class="mt-4">Store</x-jet-button>
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <x-jet-button type="submit" class="mt-4">Store</x-jet-button>
+            </div>
         </form>
     </div>
 </x-app-layout>
