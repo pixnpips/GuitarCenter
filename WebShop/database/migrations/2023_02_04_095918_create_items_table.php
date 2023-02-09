@@ -22,6 +22,10 @@ return new class extends Migration
             $table->string('img2', 100)->nullable();
             $table->string('img3', 100)->nullable();
             $table->integer('pcs')->nullable();
+            $table->foreignId('category_id')
+                ->constrained('categories')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

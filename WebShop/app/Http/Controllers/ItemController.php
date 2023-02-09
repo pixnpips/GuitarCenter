@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\item;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -12,6 +13,8 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         //
@@ -27,7 +30,8 @@ class ItemController extends Controller
     public function create()
     {
         //
-        return view('items.create');
+        $categories= Category::all();
+        return view('items.create',['categories'=>$categories]);
     }
 
     /**
@@ -41,9 +45,11 @@ class ItemController extends Controller
         //
         $request->validate([
             'title' => 'required',
+            'desc' => 'required',
             'price' => 'required|numeric',
             'img1' => 'required',
             'pcs' => 'required|numeric',
+//            'category'=> 'required',
         ]);
 
         item::create($request->all());
@@ -71,7 +77,8 @@ class ItemController extends Controller
     public function edit(item $item)
     {
         //
-        return view('items.edit',compact('item'));
+        $categories= Category::all();
+        return view('items.edit',compact('item'),['categories'=>$categories]);
     }
 
     /**
@@ -89,6 +96,7 @@ class ItemController extends Controller
             'title' => 'required',
             'price' => 'required',
             'img1' => 'required',
+            'desc' => 'required',
             'pcs' => 'required',
         ]);
 

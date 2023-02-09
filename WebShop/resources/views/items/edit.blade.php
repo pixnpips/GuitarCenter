@@ -32,10 +32,22 @@
         >
         @error('street') <span class="error">{{ $message }}</span> @enderror
 
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <strong>Category:</strong>
+            <select name="category_id"  placeholder="Category" option="{{$item->category_id}}"
+                    class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+            >   <option selected="selected" value="{{$item->category->id}}">{{$item->category->name}}</option>
+                @foreach($categories as $Category)
+                    <option value="{{$Category->id}}">{{$Category->name}}</option>
+                @endforeach
+            </select>
+        </div>
+
         <textarea  name="desc" placeholder="{{ __('Description') }}"
                    class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
         >{{ $item->desc }}</textarea>
         @error('desc') <span class="error">{{ $message }}</span> @enderror
+
 
 
         <input type="text" name="price" placeholder="{{ __('Price') }}" value="{{ $item->price }}"

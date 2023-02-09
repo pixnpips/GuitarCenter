@@ -17,7 +17,15 @@ class item extends Model
 {
     use HasFactory;
 
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+    public function order(){
+        return $this->belongsTo(Order::class);
+    }
+
     protected $fillable = [
-        'title','desc','price','img1','img2','img3','pcs'
+        'title','desc','price','img1','img2','img3','pcs','category_id'
     ];
 }

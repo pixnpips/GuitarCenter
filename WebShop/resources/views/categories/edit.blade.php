@@ -3,55 +3,41 @@
 <x-app-layout>
 
    <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
-       <h1>Edit Customer</h1>
-       <form  action=" {{route('customers.update',$Customer->id)}}" method="POST">
+       <h1>Edit Category {{$category->id}}</h1>
 
-           @csrf
-{{--            <textarea--}}
-{{--                name="message" placeholder="{{ __('What\'s on your mind?') }}"--}}
-{{--                class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"--}}
-{{--            >{{ old('message') }}</textarea>--}}
-           @method('PUT')
 
-           <input type="text" name="name" placeholder="{{ __('Full Name') }}" value="{{$Customer->name}}"
-                  class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-           >
-           @error('name') <span class="error">{{ $message }}</span> @enderror
 
-           <input type="text" name="street" placeholder="{{ __('Street and Number') }}" value="{{$Customer->street}}"
-                  class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-           >
-           @error('street') <span class="error">{{ $message }}</span> @enderror
+           <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
+               <form  action="{{route('categories.update',$category->id) }}" method="POST">
 
-           <input type="text" name="postal" placeholder="{{ __('Postal Code') }}" value="{{$Customer->postal}}"
-                  class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-           >
-           @error('postal') <span class="error">{{ $message }}</span> @enderror
+                   @csrf
+                   @method('PUT')
+                   <input type="text" name="name" placeholder="{{ __('Categoriy Name') }}" value="{{$category->name}}"
+                          class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                   >
+                   @error('name') <span class="error">{{ $message }}</span> @enderror
 
-           <input type="email" name="email" placeholder="{{ __('E-Mail Adress') }}" value="{{$Customer->email}}"
-                  class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-           >
-           @error('email') <span class="error">{{ $message }}</span> @enderror
+                   <div class="col-xs-12 col-sm-12 col-md-12">
+                       <div >
+                           <strong>Description:</strong>
+                           <textarea  name="desc" placeholder="Category Description"
+                                      class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                           >{{$category->desc}}</textarea>
+                       </div>
+                   </div>
+                   @error('desc') <span class="error">{{ $message }}</span> @enderror
 
-           <input type="date" name="bday" placeholder="{{ __('Birthday') }}" value="{{$Customer->bday}}"
-                  class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-           >
-           @error('date') <span class="error">{{ $message }}</span> @enderror
+                   <input type="text" name="img" placeholder="{{ __('Picture') }}" value="{{$category->img}}"
+                          class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                   >
+                   @error('img') <span class="error">{{ $message }}</span> @enderror
 
-           <input type="password" name="password1" placeholder="{{ __('Password') }}" value="{{$Customer->password1}}"
-                  class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-           >
-           <input type="password" name="password2" placeholder="{{ __('Repeat Password') }}"
-                  class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-           >
-           @error('password2') <span class="error">{{ $message }}</span> @enderror
+                   <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                       <x-jet-button type="submit" class="mt-4">Update Category</x-jet-button>
+                   </div>
+               </form>
+           </div>
 
-           @error('password2') <span class="error">{{ $message }}</span> @enderror
-
-           <x-jet-button type="submit" class="mt-4">Update Customer</x-jet-button>
-
-       </form>
-
-      <a href="{{route('customers.index')}}"><x-jet-button :link="route('customers.index')" class="mt-4">Back</x-jet-button></a>
+      <a href="{{route('categories.index')}}"><x-jet-button  class="mt-4">Back</x-jet-button></a>
    </div>
 </x-app-layout>

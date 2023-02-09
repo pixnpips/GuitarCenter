@@ -41,7 +41,8 @@ class CategoryController extends Controller
     {
         //----Validierung der Einträge
         $request->validate([
-
+            'name'=>'required',
+            'desc'=>'required',
         ]);
 
         Category::create($request->all());
@@ -99,4 +100,5 @@ class CategoryController extends Controller
         return redirect()->route('categories.index')
             ->with('success','Category deleted successfully');
     }
+
 }

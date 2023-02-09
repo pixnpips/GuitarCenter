@@ -26,6 +26,14 @@
                         <h2 class="mx-30 my-10 inline-block" >{{$item->title}}</h2>
                     </div>
                 </div>
+                <div class="mx-30 my-10 inline-block">
+                    <div>
+                        <h2 class="mx-30 my-10 inline-block">Category</h2>
+                    </div>
+                    <div>
+                        <h2 class="mx-30 my-10 inline-block" >{{$item->category_id}}</h2>
+                    </div>
+                </div>
                 <div class="mx-30 my-10 inline-block" >
                     <div class="mx-30 my-10 inline-block">
                         <h2 >Price</h2>
@@ -50,7 +58,7 @@
                     <form action="{{ route('items.destroy',$item->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <a href="{{ route('customers.destroy',$item)}}" > <x-jet-button type="submit" class="mt-4" >Delete</x-jet-button> </a>
+                         <x-jet-button type="submit" class="mt-4" >Delete</x-jet-button>
                     </form>
                 </div>
 
