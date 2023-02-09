@@ -31,7 +31,7 @@
                         <h2 class="mx-30 my-10 inline-block">Category</h2>
                     </div>
                     <div>
-                        <h2 class="mx-30 my-10 inline-block" >{{$item->category_id}}</h2>
+                        <h2 class="mx-30 my-10 inline-block" >{{$item->category->name}}</h2>
                     </div>
                 </div>
                 <div class="mx-30 my-10 inline-block" >
