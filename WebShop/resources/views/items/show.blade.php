@@ -55,11 +55,11 @@
             </div>
         </div>
         <div>
-            <a href="{{ route('items.index') }}"> <x-jet-button>Back</x-jet-button></a>
+            <a href="{{route('items.index') }}"> <x-jet-button>Back</x-jet-button></a>
             <a href="{{route('items.edit',$item->id)}}"><x-jet-button class="mt-4" >Edit</x-jet-button> </a>
         </div>
         <div>
-            <a href="{{route('item.buy',$item->id) }}"> <x-jet-button>Buy</x-jet-button></a>
+            <a href="{{route('item.createC',$item) }}"> <x-jet-button>Buy</x-jet-button></a>
         </div>
 
     </div>

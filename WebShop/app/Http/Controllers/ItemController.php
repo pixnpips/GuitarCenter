@@ -15,10 +15,9 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function buy (item $item){
+    public function createC(item $item){
         return view('customers.createC',['item'=>$item]);
     }
-
 
 
     public function index()

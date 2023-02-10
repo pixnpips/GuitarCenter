@@ -44,9 +44,7 @@ Route::middleware([
     Route::resource('categories', CategoryController::class);
 
 //    Route::get('/buy',[ItemController::class,'buy'])->name('item.buy');
-    Route::get('/buy/{item}',function($item){
-        return $item;
-    })->name('item.buy');
+    Route::get('/createC','App\Http\Controllers\ItemController@createC')->name('item.createC');
 
     Route::POST('/continue',[CustomerController::class,'continue'])->name('customer.continue');
     Route::get('/showOrder',[OrderController::class,'showOrder'])->name('order.showOrder');

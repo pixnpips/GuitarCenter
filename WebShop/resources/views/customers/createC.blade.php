@@ -1,9 +1,7 @@
 <x-app-layout>
     <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
 
-        <h2>Hier sollte das ITem stehen</h2>
-        <h2{{$item->id}}</h2>
-        <h2>Hier sollte das ITem stehen</h2>
+        <h2> Item ID:{{$item->id}}</h2>
 
         <form  action="{{ route('customer.continue') }}" method="POST">
             @csrf
