@@ -16,6 +16,7 @@
                 {{$category->desc}}
             </div>
         </div>
+    </div>
 
     <div class="pull-right">
         <a href="{{route('categories.index')}}"><x-jet-button class="mt-4" > Back</x-jet-button></a>

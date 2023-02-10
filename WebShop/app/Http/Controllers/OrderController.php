@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Customer;
+use App\Models\item;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -16,7 +18,28 @@ class OrderController extends Controller
     {
         //
         $orders = Order::all();
+
         return view('orders.index', compact('orders'));
+    }
+
+    public function customerCreateOrder(Request $request,item $item, Customer $customer){
+        $iID=$item->id;
+        $cID=$customer->id;
+        $request->merge(['item_id'=>$iID]);
+        $request->merge(['customer_id'=>$cID]);
+        $request['status']='open';
+
+        $request->validate([
+            'item_id'=>'required',
+            'customer_id' => 'required',
+            'status'=> 'required',
+        ]);
+        $order=Order::create($request->all());
+        return redirect()->route ('orders.show', compact('order'));
+    }
+
+    public function showOrder(item $item, Customer $customer){
+        return view('orders.showOrder',['item'=>$item, 'customer'=>$customer]);
     }
 
     /**
@@ -40,14 +63,11 @@ class OrderController extends Controller
     {
         //
         $request->validate([
-            'title' => 'required',
-            'price' => 'required|numeric',
-            'img1' => 'required',
-            'pcs' => 'required|numeric',
+
         ]);
 
-       Order::create($request->all());
-        return redirect()->route('orders.index')->with('success','Order created successfully.');
+        Order::create($request->all());
+        return redirect()->route('orders.view','$order->id')->with('success','Order Overview');
     }
 
     /**

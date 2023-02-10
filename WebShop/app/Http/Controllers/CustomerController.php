@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Models\item;
 
 class CustomerController extends Controller
 {
@@ -12,6 +13,24 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function continue(Request $request, item $item){
+        //----------------Hier validieren wir unsere DB Einträge
+        $request->validate([
+            'name' => 'required|alpha_dash',
+            'street' => 'required|alpha_dash',
+            'postal' => 'required|numeric|max:255',
+            'email' => 'required',
+            'bday' => 'required',
+            'password1' => 'required'
+        ]);
+        $customer=Customer::create($request->all());
+        return redirect()->route('order.showOrder',['item'=>$item, 'customer'=>$customer]);
+    }
+
+    public function createC(item $item){
+        return view('customers.createC',['item'=>$item]);
+    }
 
     public function index()
     {
@@ -57,12 +76,8 @@ class CustomerController extends Controller
         //----------------------------Für Order Klasse-------------------
 
 //-----------------------Hier haben wir einen One to many Beziehung auf die User Klasse die wir für Bestellungen nutzen können
-//        $validated = $request->validate([
-//            'message' => 'required|string|max:255',
-//        ]);
 //
 //        $request->user()->orders()->create($validated);
-//
 //        return redirect(route('orders.index'));
 
     }

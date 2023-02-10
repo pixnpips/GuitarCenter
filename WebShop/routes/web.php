@@ -42,4 +42,12 @@ Route::middleware([
     Route::resource('customers', CustomerController::class);
     Route::resource('orders', OrderController::class);
     Route::resource('categories', CategoryController::class);
+
+//    Route::get('/buy',[ItemController::class,'buy'])->name('item.buy');
+    Route::get('/buy/{item}',function($item){
+        return $item;
+    })->name('item.buy');
+
+    Route::POST('/continue',[CustomerController::class,'continue'])->name('customer.continue');
+    Route::get('/showOrder',[OrderController::class,'showOrder'])->name('order.showOrder');
 });

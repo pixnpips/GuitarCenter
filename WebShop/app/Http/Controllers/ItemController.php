@@ -5,14 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\item;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\This;
 
 class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     *@param \App\Models\item $item
      * @return \Illuminate\Http\Response
      */
+
+    public function buy (item $item){
+        return view('customers.createC',['item'=>$item]);
+    }
+
 
 
     public function index()
