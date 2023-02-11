@@ -47,26 +47,5 @@
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Pieces:</strong>
-                {{ $item->pcs}}
-            </div>
-        </div>
-        <div>
-            <a href="{{route('items.index') }}"> <x-jet-button>Back</x-jet-button></a>
-            <a href="{{route('items.edit',$item->id)}}"><x-jet-button class="mt-4" >Edit</x-jet-button> </a>
-        </div>
-
-
-{{--        <------------------Jetzt schicken wir mit dem Kauf Button auch die Korrekte id mit!------------------->><--}}
-        <div>
-            <form action="{{route('customer.createC')}}" method="post">
-                @csrf
-                <input type="hidden" name="id" value="{{$item->id}}">
-            <x-jet-button type="submit" value="send">Buy</x-jet-button>
-            </form>
-        </div>
-
     </div>
 </x-app-layout>

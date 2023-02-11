@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Models\item;
+use Session;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
@@ -14,7 +17,7 @@ class CustomerController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function continue(Request $request, item $item){
+    public function continue(Request $request){
         //----------------Hier validieren wir unsere DB Einträge
         $request->validate([
             'name' => 'required|alpha_dash',
@@ -24,11 +27,35 @@ class CustomerController extends Controller
             'bday' => 'required',
             'password1' => 'required'
         ]);
-        $customer=Customer::create($request->all());
-        return redirect()->route('order.showOrder',['item'=>$item, 'customer'=>$customer]);
+
+
+        $itemid=$request->input('itemid');
+        Log::debug('Item ID.');
+        Log::info(print_r($itemid, true));
+
+        $item=item::all()->find($itemid);
+        Log::debug('Das Item.');
+        Log::info(print_r($item, true));
+
+        $data=$request->all();
+        Log::debug('der Post.');
+        Log::info(print_r($data, true));
+
+        $customer=customer::create($data);
+        Log::debug('der erstellte Kunde.');
+        Log::info(print_r($customer, true));
+
+        if(!Session::has($customer->id) ){
+            session([$customer->id => $customer]);
+        }
+        return view('orders.showOrder',compact('item','customer'));
     }
 
-    public function createC(item $item){
+
+    public function createC(Request $request){
+        $id=$request->input('id');
+        //Log::info(print_r($id, true));
+        $item=item::all()->find($id);
         return view('customers.createC',['item'=>$item]);
     }
 

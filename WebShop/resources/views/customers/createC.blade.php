@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
 
-        <h2> Item ID:{{$item->id}}</h2>
+        <h2> Item: {{$item->title}}</h2>
 
         <form  action="{{ route('customer.continue') }}" method="POST">
             @csrf
@@ -39,6 +39,9 @@
                    class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
             >
             @error('password2') <span class="error">{{ $message }}</span> @enderror
+
+            <input type="hidden" name="itemid" value="{{$item->id}}">
+
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <x-jet-button type="submit" class="mt-4">Proceed to Order</x-jet-button>
             </div>

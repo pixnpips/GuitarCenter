@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\item;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use phpDocumentor\Reflection\Types\This;
 
 class ItemController extends Controller
@@ -15,9 +18,8 @@ class ItemController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function createC(item $item){
-        return view('customers.createC',['item'=>$item]);
-    }
+
+
 
 
     public function index()
@@ -54,7 +56,7 @@ class ItemController extends Controller
             'price' => 'required|numeric',
             'img1' => 'required',
             'pcs' => 'required|numeric',
-//            'category'=> 'required',
+          //  'category'=> 'required',
         ]);
 
         item::create($request->all());
@@ -69,7 +71,15 @@ class ItemController extends Controller
      */
     public function show(item $item)
     {
-        //
+        //Sessions brauchen wir um zu schauen welche Produkte sich Kunden angeschaut haben
+        //Aber auch um vllt die angeschauten Objekte nochmal verwenden zu können
+        session_start();
+         session_destroy();
+        if(!Session::has($item->id) ){
+            session([$item->id => $item]);
+        }
+//        Log::info(print_r($item, true));
+//        Log::info(print_r(Session::all(), true));
         return view('items.show',compact('item'));
     }
 

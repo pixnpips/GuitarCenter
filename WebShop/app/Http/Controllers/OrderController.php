@@ -6,6 +6,8 @@ use App\Models\Order;
 use App\Models\Customer;
 use App\Models\item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Session;
 
 class OrderController extends Controller
 {
@@ -18,9 +20,9 @@ class OrderController extends Controller
     {
         //
         $orders = Order::all();
-
         return view('orders.index', compact('orders'));
     }
+
 
     public function customerCreateOrder(Request $request,item $item, Customer $customer){
         $iID=$item->id;
@@ -37,6 +39,7 @@ class OrderController extends Controller
         $order=Order::create($request->all());
         return redirect()->route ('orders.show', compact('order'));
     }
+
 
     public function showOrder(item $item, Customer $customer){
         return view('orders.showOrder',['item'=>$item, 'customer'=>$customer]);
