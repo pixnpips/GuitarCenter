@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\ItemController;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Models\item;
@@ -17,47 +18,42 @@ class CustomerController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function continue(Request $request){
-        //----------------Hier validieren wir unsere DB Einträge
+
+    // Diese Methode führt uns zur View Customer createC. von wo aus wir nun den Nutzer erstellen wollen!! Das machen wir in der Continue Methode des Nutzers
+    //auch er bekommt per Post Daten zugesendet zum anzeigen
+
+    public function createC($id){
+        session(['buy' => $id]);
+        Log::info(print_r($id, true));
+        Log::info(print_r(Session::all(), true));
+      return view('customers.CreateC',['id'=>$id]);
+    }
+
+
+
+    public function continue(Request $request)
+    {
+//        //----------------Hier validieren wir unsere Response Einträge
+//        $Data=$request->all();
+// Bei Request Validate wird automatisch angenomme das das Form per get verschickt wurde um dann im post validatet zu werden!!!
+////Lösung wir bauen  customCreate in get um und nehmen das Item aus der Session
+
         $request->validate([
             'name' => 'required|alpha_dash',
             'street' => 'required|alpha_dash',
             'postal' => 'required|numeric|max:255',
             'email' => 'required',
             'bday' => 'required',
-            'password1' => 'required'
+            'password1' => 'required',
         ]);
 
+        $customer = Customer::create($request->all());
+        session(['customer' => $customer->id]);
+        Log::info(print_r(Session::all(), true));
 
-        $itemid=$request->input('itemid');
-        Log::debug('Item ID.');
-        Log::info(print_r($itemid, true));
-
-        $item=item::all()->find($itemid);
-        Log::debug('Das Item.');
-        Log::info(print_r($item, true));
-
-        $data=$request->all();
-        Log::debug('der Post.');
-        Log::info(print_r($data, true));
-
-        $customer=customer::create($data);
-        Log::debug('der erstellte Kunde.');
-        Log::info(print_r($customer, true));
-
-        if(!Session::has($customer->id) ){
-            session([$customer->id => $customer]);
-        }
-        return view('orders.showOrder',compact('item','customer'));
+        return redirect()->route('showOrder');
     }
 
-
-    public function createC(Request $request){
-        $id=$request->input('id');
-        //Log::info(print_r($id, true));
-        $item=item::all()->find($id);
-        return view('customers.createC',['item'=>$item]);
-    }
 
     public function index()
     {
@@ -85,27 +81,18 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-//----------------Hier validieren wir unsere DB Einträge
+//----------------Hier validieren wir unsere Form Inputs und spcuekn Fehlermeldungen aus
         $request->validate([
             'name' => 'required|alpha_dash',
             'street' => 'required|alpha_dash',
             'postal' => 'required|numeric|max:255',
             'email' => 'required',
             'bday' => 'required',
-            'password1' => 'required'
+            'password1' => 'required',
         ]);
-
 
         Customer::create($request->all());
         return redirect()->route('customers.index')->with('success','Customer created successfully.');
-
-
-        //----------------------------Für Order Klasse-------------------
-
-//-----------------------Hier haben wir einen One to many Beziehung auf die User Klasse die wir für Bestellungen nutzen können
-//
-//        $request->user()->orders()->create($validated);
-//        return redirect(route('orders.index'));
 
     }
 

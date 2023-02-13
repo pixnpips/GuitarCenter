@@ -18,30 +18,13 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
         $orders = Order::all();
         return view('orders.index', compact('orders'));
     }
 
-
-    public function customerCreateOrder(Request $request,item $item, Customer $customer){
-        $iID=$item->id;
-        $cID=$customer->id;
-        $request->merge(['item_id'=>$iID]);
-        $request->merge(['customer_id'=>$cID]);
-        $request['status']='open';
-
-        $request->validate([
-            'item_id'=>'required',
-            'customer_id' => 'required',
-            'status'=> 'required',
-        ]);
-        $order=Order::create($request->all());
-        return redirect()->route ('orders.show', compact('order'));
-    }
-
-
-    public function showOrder(item $item, Customer $customer){
+    public function showOrder(Request $request){
+        $item=item::all()->find(session('buy'));
+        $customer=Customer::all()->find(session('customer'));
         return view('orders.showOrder',['item'=>$item, 'customer'=>$customer]);
     }
 

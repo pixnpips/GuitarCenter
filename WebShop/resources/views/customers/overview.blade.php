@@ -1,4 +1,4 @@
-<x-app-layout>
+<h2>Customer Overview</h2>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -30,4 +30,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+

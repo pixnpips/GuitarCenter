@@ -1,4 +1,4 @@
-<x-app-layout>
+<h2>Product Overview</h2>
     <div class="row">
         <div class="flex-row justify-between col-lg-12 margin-tb">
             <div >
@@ -48,4 +48,4 @@
         </div>
 
     </div>
-</x-app-layout>
+

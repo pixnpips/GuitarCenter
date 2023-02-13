@@ -61,11 +61,7 @@
 
 {{--        <------------------Jetzt schicken wir mit dem Kauf Button auch die Korrekte id mit!------------------->><--}}
         <div>
-            <form action="{{route('customer.createC')}}" method="post">
-                @csrf
-                <input type="hidden" name="id" value="{{$item->id}}">
-            <x-jet-button type="submit" value="send">Buy</x-jet-button>
-            </form>
+            <a href="{{route('customCreate',['id'=>$item->id])}}"><x-jet-button>Buy</x-jet-button></a>
         </div>
 
     </div>

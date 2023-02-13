@@ -43,10 +43,15 @@ Route::middleware([
     Route::resource('orders', OrderController::class);
     Route::resource('categories', CategoryController::class);
 
-//   Hier definieren wir doe Post Route mit der wir die Artikel ID übergeben
-    Route::POST('customers/createC',[CustomerController::class, 'createC'])->name('customer.createC');
+//   Hier definieren wir die Post Route mit der wir die Artikel ID übergeben
 
-    //Das hier muss ich noch ändern
-    Route::POST('customer/continue',[CustomerController::class,'continue'])->name('customer.continue');
-    Route::get('orders/showOrder',[OrderController::class,'showOrder'])->name('order.showOrder');
+    Route::get('customCreate/{id}',[CustomerController::class, 'createC'])->name('customCreate');
+
+    Route::get('/showOrder',[OrderController::class, 'showOrder'])->name('showOrder');
+
+    Route::POST('customers/continue',[CustomerController::class,'continue'])->name('continue');
+
+    Route::get('orders.index',[OrderController::class, 'index']);
+
+
 });
