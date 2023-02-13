@@ -13,6 +13,11 @@ class Category extends Model
         'name','desc','img',
     ];
 
+    public function getImg()
+    {
+        return $this->img;
+    }
+
     public function items(){
         return $this->hasMany(item::class);
     }

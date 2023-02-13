@@ -18,9 +18,20 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+        </div>
+    </div>
+
+    <img src="{{$category->img}}">
+
+
     <div class="pull-right">
         <a href="{{route('categories.index')}}"><x-jet-button class="mt-4" > Back</x-jet-button></a>
         <a href="{{route('categories.edit',$category)}}"><x-jet-button class="mt-4" >Edit</x-jet-button> </a>
     </div>
+
+
 
 </x-app-layout>

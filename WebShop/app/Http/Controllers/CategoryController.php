@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 class CategoryController extends Controller
 {
@@ -45,8 +46,30 @@ class CategoryController extends Controller
             'desc'=>'required',
         ]);
 
+        if ($request->has('imgSrc')) {
+            // Get image file
+            $image = $request->file('imgSrc');
+            // Make a image name based on user name and current timestamp
+            $name = $request->input('name');
+            // Define folder path
+            $folder = '/uploads/images/';
+            // Make a file path where image will be stored [ folder path + file name + file extension]
+            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+            // Upload image
+            $this->uploadOne($image, $folder, 'public', $name);
+            // Set user profile image path in database to filePath
+            $request['img'] = $filePath;
+        }
+
         Category::create($request->all());
         return redirect()->route('categories.index')->with('success','Category created successfully.');
+    }
+
+    public function uploadOne(UploadedFile $uploadedFile, $folder = null, $disk = 'public', $filename = null)
+    {
+        $name = !is_null($filename) ? $filename : Str::random(25);
+        $file = $uploadedFile->storeAs($folder, $name.'.'.$uploadedFile->getClientOriginalExtension(), $disk);
+        return $file;
     }
 
     /**
@@ -101,5 +124,9 @@ class CategoryController extends Controller
         return redirect()->route('categories.index')
             ->with('success','Category deleted successfully');
     }
+
+
+
+
 
 }
