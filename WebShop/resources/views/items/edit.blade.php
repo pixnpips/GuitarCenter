@@ -22,7 +22,7 @@
 {{--    @endif--}}
 
 
-    <form action="{{ route('items.update',$item->id) }}" method="POST">
+    <form action="{{ route('items.update',$item->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         @method('PUT')
@@ -30,7 +30,7 @@
         <input type="text" name="title" placeholder="{{ __('Model') }}" value="{{ $item->title }}"
                class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
         >
-        @error('street') <span class="error">{{ $message }}</span> @enderror
+        @error('title') <span class="error">{{ $message }}</span> @enderror
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <strong>Category:</strong>
@@ -53,22 +53,34 @@
         <input type="text" name="price" placeholder="{{ __('Price') }}" value="{{ $item->price }}"
                class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
         >
-        @error('postal') <span class="error">{{ $message }}</span> @enderror
+        @error('price') <span class="error">{{ $message }}</span> @enderror
 
 
         <input type="text" name="img1" placeholder="{{ __('Image 1') }}" value="{{ $item->img1 }}"
                class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
         >
-        @error('img1') <span class="error">{{ $message }}</span> @enderror
 
         <input type="text" name="img2" placeholder="{{ __('Image 2') }}" value="{{ $item->img2 }}"
                class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
         >
-        @error('date') <span class="error">{{ $message }}</span> @enderror
 
         <input type="text" name="img3" placeholder="{{ __('Image 3') }}" value="{{ $item->img3 }}"
                class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
         >
+
+        <div class="form-group row">
+            <label for="imgSrc1" class="col-md-4 col-form-label text-md-right"><strong>Item Images:</strong></label>
+            <div class="col-md-6">
+                <input id="imgSrc1" type="file" class="form-control" name="imgSrc1[]" multiple>
+            </div>
+        </div>
+
+        <div>
+            <img src="{{$item->img1}}">
+            <img src="{{$item->img2}}">
+            <img src="{{$item->img3}}">
+        </div>
+
         <input type="text" name="pcs" placeholder="{{ __('Pieces') }}" value="{{ $item->pcs}}"
                class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
         >

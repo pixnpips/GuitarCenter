@@ -24,7 +24,9 @@
         </div>
     </div>
 
-    <img src="{{$category->img}}">
+    <div>
+        <img src="{{$category->img}}">
+    </div>
 
 
     <div class="pull-right">

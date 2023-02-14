@@ -28,23 +28,32 @@
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Image 1:</strong>
-                {{ $item->img1}}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Image 2:</strong>
-                {{ $item->img2}}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Image 3:</strong>
-                {{ $item->img3}}
-            </div>
+{{--        Hier haben wir die Anzeige der  Bilder Pfade aus der Datenbank--}}
+
+{{--        <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--            <div class="form-group">--}}
+{{--                <strong>Image 1:</strong>--}}
+{{--                {{ $item->img1}}--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--            <div class="form-group">--}}
+{{--                <strong>Image 2:</strong>--}}
+{{--                {{ $item->img2}}--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--            <div class="form-group">--}}
+{{--                <strong>Image 3:</strong>--}}
+{{--                {{ $item->img3}}--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
+
+        <div>
+            <img src="{{$item->img1}}">
+            <img src="{{$item->img2}}">
+            <img src="{{$item->img3}}">
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">

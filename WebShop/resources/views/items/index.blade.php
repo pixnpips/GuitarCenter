@@ -48,7 +48,7 @@
                         <h2 >Available</h2>
                     </div>
                     <div>
-                        <h2 class="mx-30 my-10 inline-block">{{$item->price}}</h2>
+                        <h2 class="mx-30 my-10 inline-block">{{$item->pcs}}</h2>
                     </div>
 
                 </div>

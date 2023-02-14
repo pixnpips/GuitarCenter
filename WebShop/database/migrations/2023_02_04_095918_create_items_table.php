@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title', 45);
             $table->string('desc', 250);
             $table->float('price', 7,2);
-            $table->string('img1', 100);
+            $table->string('img1', 100)->nullable();
             $table->string('img2', 100)->nullable();
             $table->string('img3', 100)->nullable();
             $table->integer('pcs')->nullable();

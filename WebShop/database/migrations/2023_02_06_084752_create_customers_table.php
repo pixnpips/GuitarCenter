@@ -21,9 +21,6 @@ return new class extends Migration
             $table->string('email');
             $table->date('bday');
             $table->string('password1');
-            $table->foreignId('order_id')
-                ->constrained('orders')
-                ->onUpdate('cascade');
             $table->timestamps();
 
             //-------------Für Orders:

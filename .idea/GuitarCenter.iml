@@ -17,6 +17,10 @@
       <excludeFolder url="file://$MODULE_DIR$/WebShop/vendor/phpdocumentor/type-resolver" />
       <excludeFolder url="file://$MODULE_DIR$/WebShop/vendor/barryvdh/laravel-ide-helper" />
       <excludeFolder url="file://$MODULE_DIR$/WebShop/vendor/barryvdh/reflection-docblock" />
+      <excludeFolder url="file://$MODULE_DIR$/WebShop/vendor/symfony/polyfill-intl-icu" />
+      <excludeFolder url="file://$MODULE_DIR$/WebShop/vendor/moneyphp/money" />
+      <excludeFolder url="file://$MODULE_DIR$/WebShop/vendor/stripe/stripe-php" />
+      <excludeFolder url="file://$MODULE_DIR$/WebShop/vendor/laravel/cashier" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

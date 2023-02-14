@@ -6,6 +6,7 @@ use App\Models\item;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Session;
+use Helper;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use phpDocumentor\Reflection\Types\This;
@@ -17,16 +18,20 @@ class ItemController extends Controller
      *@param \App\Models\item $item
      * @return \Illuminate\Http\Response
      */
-
-
-
-
-
     public function index()
     {
         //
         $items = item::all();
         return view('items.index', compact('items'));
+    }
+
+    public function validateit(Request $request){
+        $request->validate([
+            'title' => 'required',
+            'desc' => 'required',
+            'price' => 'required|numeric',
+            'pcs' => 'required|numeric',
+        ]);
     }
 
     /**
@@ -49,16 +54,8 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $request->validate([
-            'title' => 'required',
-            'desc' => 'required',
-            'price' => 'required|numeric',
-            'img1' => 'required',
-            'pcs' => 'required|numeric',
-          //  'category'=> 'required',
-        ]);
-
+        $this->validateit($request);
+        Helper::prepareUploadItem($request);
         item::create($request->all());
         return redirect()->route('items.index')->with('success','Item created successfully.');
     }
@@ -106,17 +103,9 @@ class ItemController extends Controller
     public function update(Request $request, item $item)
     {
         //
-
-        $request->validate([
-            'title' => 'required',
-            'price' => 'required',
-            'img1' => 'required',
-            'desc' => 'required',
-            'pcs' => 'required',
-        ]);
-
+        $this->validateit($request);
+        Helper::prepareUploadItem($request);
         $item->update($request->all());
-
         return redirect()->route('items.index')->with('success','Item updated successfully');
 
     }

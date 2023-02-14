@@ -21,7 +21,7 @@
         </div>
     @endif
 
-    <form action="{{ route('items.store') }}" method="POST">
+    <form action="{{ route('items.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="row">
@@ -63,30 +63,40 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Image 1:</strong>
-                    <input type="text" name="img1"  placeholder="Image 1"
-                           class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                    >
+{{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                <div class="form-group">--}}
+{{--                    <strong>Image 1:</strong>--}}
+{{--                    <input type="text" name="img1"  placeholder="Image 1"--}}
+{{--                           class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"--}}
+{{--                    >--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                <div class="form-group">--}}
+{{--                    <strong>Image 2:</strong>--}}
+{{--                    <input type="text" name="img2"  placeholder="Image 2"--}}
+{{--                           class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"--}}
+{{--                    >--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                <div class="form-group">--}}
+{{--                    <strong>Image 3:</strong>--}}
+{{--                    <input type="text" name="img3" placeholder="Image 3"--}}
+{{--                           class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"--}}
+{{--                    >--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+            <div class="form-group row">
+                <label for="imgSrc1" class="col-md-4 col-form-label text-md-right"><strong>Item Images:</strong></label>
+                <div class="col-md-6">
+                    <input id="imgSrc1" type="file" class="form-control" name="imgSrc1[]" multiple>
+                    {{--                        <code>{{ auth()->user()->image }}</code>--}}
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Image 2:</strong>
-                    <input type="text" name="img2"  placeholder="Image 2"
-                           class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                    >
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Image 3:</strong>
-                    <input type="text" name="img3" placeholder="Image 3"
-                           class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                    >
-                </div>
-            </div>
+
+            @error('imgSrc1') <span class="error">{{ $message }}</span> @enderror
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -95,7 +105,6 @@
                            class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                 </div>
             </div>
-
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <x-jet-button type="submit">Create Item</x-jet-button>

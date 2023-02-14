@@ -34,11 +34,11 @@
                 </div>
             </div>
 
-            <img id="preview-image">
+{{--            <img id="preview-image">--}}
 
 
 
-            @error('img') <span class="error">{{ $message }}</span> @enderror
+            @error('imgSrc') <span class="error">{{ $message }}</span> @enderror
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <x-jet-button type="submit" class="mt-4">Store</x-jet-button>
