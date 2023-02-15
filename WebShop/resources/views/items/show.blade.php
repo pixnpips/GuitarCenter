@@ -61,7 +61,11 @@
                 <strong>Pieces:</strong>
                 {{ $item->pcs}}
             </div>
-        </div>
+        </div>#
+
+{{--        Payment Shit--}}
+
+
         <div>
             <a href="{{route('items.index') }}"> <x-jet-button>Back</x-jet-button></a>
             <a href="{{route('items.edit',$item->id)}}"><x-jet-button class="mt-4" >Edit</x-jet-button> </a>
@@ -69,6 +73,28 @@
 
 
 {{--        <------------------Jetzt schicken wir mit dem Kauf Button auch die Korrekte id mit!------------------->><--}}
+
+        <div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">{{ __('Dashboard') }}</div>
+                            <div class="card-body">
+                                @if (session('status'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
+                                {{ __('You are logged in!') }} <br><br>
+                                <a href="{{route('goToPayment', ['id'=>$item->id])}}"><x-jet-button>Go to Payment</x-jet-button></a> &nbsp;
+{{--                                <a href="{{route('goToPayment', ['id'=>$item->id])}}"><x-jet-button>Update Information for $10</x-jet-button></a>--}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div>
             <a href="{{route('customCreate',['id'=>$item->id])}}"><x-jet-button>Buy</x-jet-button></a>
         </div>
