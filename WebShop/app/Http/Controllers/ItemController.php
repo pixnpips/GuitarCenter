@@ -71,13 +71,17 @@ class ItemController extends Controller
         //Sessions brauchen wir um zu schauen welche Produkte sich Kunden angeschaut haben
         //Aber auch um vllt die angeschauten Objekte nochmal verwenden zu können
         session_start();
-         session_destroy();
+//         session_destroy();
+
+        $intent = auth()->user()->createSetupIntent();
+
         if(!Session::has($item->id) ){
             session([$item->id => $item]);
         }
 //        Log::info(print_r($item, true));
 //        Log::info(print_r(Session::all(), true));
-        return view('items.show',compact('item'));
+
+        return view('items.show',compact('item','intent'));
     }
 
     /**

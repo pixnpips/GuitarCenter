@@ -5,6 +5,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,10 @@ Route::middleware([
     Route::POST('customers/continue',[CustomerController::class,'continue'])->name('continue');
 
     Route::get('orders.index',[OrderController::class, 'index']);
+
+    Route::get('/payment/{id}', [PaymentController::class, 'charge'])->name('goToPayment');
+
+    Route::post('/payment/process-payment/{id}', [PaymentController::class, 'processPayment'])->name('processPayment');
 
 
 });
