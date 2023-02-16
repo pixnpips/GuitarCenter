@@ -58,5 +58,6 @@ Route::middleware([
 
     Route::post('/payment/process-payment/{id}', [PaymentController::class, 'processPayment'])->name('processPayment');
 
+    Route::get('/finishedOrder',[OrderController::class, 'finishedOrder'])->name('finishedOrder');
 
 });

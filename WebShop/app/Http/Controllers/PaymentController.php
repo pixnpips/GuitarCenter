@@ -1,14 +1,17 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\item;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Auth;
+use Session;
 class PaymentController extends Controller
 {
     public function charge($id)
     {
         $item= item::all()->find($id);
-        $user = Auth::user();
+//        $user = Auth::user();
+        $user=Customer::all()->find(session('customer'));
         return view('payment',[
             'user'=>$user,
             'intent' => $user->createSetupIntent(),
@@ -21,7 +24,8 @@ class PaymentController extends Controller
     public function processPayment(Request $request, $id)
     {
         $item= item::all()->find($id);
-        $user = Auth::user();
+//        $user = Auth::user();
+        $user=Customer::all()->find(session('customer'));
         $paymentMethod = $request->input('payment_method');
         $user->createOrGetStripeCustomer();
         $user->addPaymentMethod($paymentMethod);
@@ -33,6 +37,7 @@ class PaymentController extends Controller
         {
             return back()->withErrors(['message' => 'Error creating subscription. ' . $e->getMessage()]);
         }
-        return redirect()->route('dashboard');
+        session(['ordercompleted' => true]);
+        return redirect()->route('orders.create');
     }
 }

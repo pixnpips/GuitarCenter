@@ -22,7 +22,7 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
     }
 
-    public function showOrder(Request $request){
+    public function showOrder(){
         $item=item::all()->find(session('buy'));
         $customer=Customer::all()->find(session('customer'));
         return view('orders.showOrder',['item'=>$item, 'customer'=>$customer]);
@@ -36,24 +36,35 @@ class OrderController extends Controller
     public function create()
     {
         //
-        return view('orders.create');
+        $this->store();
+        return redirect()->route('finishedOrder');
     }
 
+
+    public function finishedOrder(){
+        $item=item::all()->find(session('buy'));
+        $customer=Customer::all()->find(session('customer'));
+        return view('orders.finishedOrder',['item'=>$item, 'customer'=>$customer]);
+    }
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
-        $request->validate([
-
-        ]);
-
-        Order::create($request->all());
-        return redirect()->route('orders.view','$order->id')->with('success','Order Overview');
+        $item=item::all()->find(session('buy'));
+        $customer=Customer::all()->find(session('customer'));
+        $Iid=$item->id;
+        $Cid=$customer->id;
+        $status='paid';
+        $order=Order::create([
+            'item_id'=>$Iid,
+            'customer_id'=>$Cid,
+            'status'=>$status
+            ]);
+        session(['order'=> $order]);
     }
 
     /**

@@ -20,6 +20,6 @@ class Order extends Model
     }
 
     public function item(){
-        return $this->hasOne(item::class);
+        return $this->belongsTo(item::class);
     }
 }

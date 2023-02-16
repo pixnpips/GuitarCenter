@@ -40,18 +40,22 @@
         </div>
     @endif
     <div class="form-group text-center">
-        <x-jet-button type="button"  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-success btn-block">SUBMIT</x-jet-button>
+        <x-jet-button type="button"  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-success btn-block">Pay Article</x-jet-button>
     </div>
 </form>
 <script src="https://js.stripe.com/v3/"></script>
 <script>
+    const appearance = {
+        theme: 'stripe'
+    };
+
     var stripe = Stripe('{{ env('STRIPE_KEY') }}');
     // var stripe = Stripe('pk_test_51MbhuWBUHvpA09DtOQiKDCeiY3r65SPExwiLPQPVKiemBXJoBSYWMJK6PJ73oXwiwwNvEuXIC0cngQzYkaG8PWMw00RoSqG4x2');
-    var elements = stripe.elements();
-    var style = {
+    var elements = stripe.elements(appearance);
+    var style1 = {
         base: {
             color: '#32325d',
-            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            // fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
             fontSmoothing: 'antialiased',
             fontSize: '16px',
             '::placeholder': {
@@ -63,7 +67,7 @@
             iconColor: '#fa755a'
         }
     };
-    var card = elements.create('card', {hidePostalCode: true, style: style});
+    var card = elements.create('card', {hidePostalCode: true, style: style1});
     card.mount('#card-element');
     console.log(document.getElementById('card-element'));
     card.addEventListener('change', function(event) {
@@ -105,5 +109,6 @@
 </script>
 
 </x-app-layout>
+
 {{--</body>--}}
 {{--</html>--}}
