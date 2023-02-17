@@ -59,6 +59,4 @@
             <a href="{{ route('orders.destroy',$order)}}"> <x-jet-button type="submit" class="mt-4" >Delete</x-jet-button> </a>
         </form>
     </div>
-
-
 </x-app-layout>

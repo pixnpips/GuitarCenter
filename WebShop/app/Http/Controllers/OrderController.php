@@ -91,6 +91,7 @@ class OrderController extends Controller
         return view('orders.edit',compact('order'));
     }
 
+
     /**
      * Update the specified resource in storage.
      *

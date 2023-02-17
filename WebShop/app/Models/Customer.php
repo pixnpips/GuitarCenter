@@ -20,6 +20,10 @@ class Customer extends Model
     use HasFactory;
     use Billable;
 
+    public static function getLatestCustomers(){
+        return Customer::orderBy('created_at', 'desc')->take(10)->get();
+    }
+
     protected $fillable = [
         'name', 'street','postal','email','bday','password1'
     ];

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Session;
 use Helper;
 
 class CategoryController extends Controller
@@ -27,6 +28,16 @@ class CategoryController extends Controller
             'name'=>'required',
             'desc'=>'required',
         ]);
+    }
+
+    public function WebShop(){
+        $categories = Category::all();
+        return view('WebShop',compact('categories'));
+    }
+
+    public function showItems(Category $category){
+        $items=$category->items();
+        return view ('categories.showItems', compact('items'));
     }
 
 

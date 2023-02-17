@@ -29,15 +29,7 @@ class CustomerController extends Controller
       return view('customers.CreateC',['id'=>$id]);
     }
 
-
-
-    public function continue(Request $request)
-    {
-//        //----------------Hier validieren wir unsere Response Einträge
-//        $Data=$request->all();
-// Bei Request Validate wird automatisch angenomme das das Form per get verschickt wurde um dann im post validatet zu werden!!!
-////Lösung wir bauen  customCreate in get um und nehmen das Item aus der Session
-
+    public function validateCust(Request $request){
         $request->validate([
             'name' => 'required|alpha_dash',
             'street' => 'required|alpha_dash',
@@ -47,12 +39,20 @@ class CustomerController extends Controller
             'password1' => 'required',
         ]);
 
+    }
+
+
+    public function continue(Request $request)
+    {
+        $this->validateCust($request);
         $customer = Customer::create($request->all());
         session(['customer' => $customer->id]);
         Log::info(print_r(Session::all(), true));
 
         return redirect()->route('showOrder');
     }
+
+
 
 
     public function index()
@@ -82,15 +82,7 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
 //----------------Hier validieren wir unsere Form Inputs und spcuekn Fehlermeldungen aus
-        $request->validate([
-            'name' => 'required|alpha_dash',
-            'street' => 'required|alpha_dash',
-            'postal' => 'required|numeric|max:255',
-            'email' => 'required',
-            'bday' => 'required',
-            'password1' => 'required',
-        ]);
-
+        $this->validateCust($request);
         Customer::create($request->all());
         return redirect()->route('customers.index')->with('success','Customer created successfully.');
 
@@ -130,15 +122,7 @@ class CustomerController extends Controller
     public function update(Request $request, Customer $customer)
     {
         //
-        $request->validate([
-            'name' => 'required|alpha_dash',
-            'street' => 'required|alpha_dash',
-            'postal' => 'required|numeric|max:255',
-            'email' => 'required',
-            'bday' => 'required',
-            'password1' => 'required'
-        ]);
-
+        $this->validateCust($request);
         $customer->update($request->all());
         return redirect()->route('customers.index')->with('success','Customer updated successfully');
     }

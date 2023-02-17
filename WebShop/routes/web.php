@@ -6,6 +6,8 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PaymentController;
+use App\Models\Customer;
+use App\Models\Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +22,13 @@ use App\Http\Controllers\PaymentController;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
+Route::get('/', [CategoryController::class,'WebShop'])->name('WebShop');
+
+Route::get('/showItems/{id}', [CategoryController::class,'showItems'])->name('showItems');
 
 //   ----------------- Diese Routen können nur von angemeldeten Usern betreten werden!!
 
@@ -32,8 +37,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
+
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $orders=Order::getlatestOrders();
+        $customers=Customer::getlatestCustomers();
+        return view('dashboard',['customers'=>$customers, 'orders'=>$orders]);
     })->name('dashboard');
 
 
@@ -44,20 +52,17 @@ Route::middleware([
     Route::resource('orders', OrderController::class);
     Route::resource('categories', CategoryController::class);
 
+
 //   Hier definieren wir die Post Route mit der wir die Artikel ID übergeben
 
     Route::get('customCreate/{id}',[CustomerController::class, 'createC'])->name('customCreate');
-
-    Route::get('/showOrder',[OrderController::class, 'showOrder'])->name('showOrder');
-
     Route::POST('customers/continue',[CustomerController::class,'continue'])->name('continue');
 
     Route::get('orders.index',[OrderController::class, 'index']);
+    Route::get('/showOrder',[OrderController::class, 'showOrder'])->name('showOrder');
+    Route::get('/finishedOrder',[OrderController::class, 'finishedOrder'])->name('finishedOrder');
 
     Route::get('/payment/{id}', [PaymentController::class, 'charge'])->name('goToPayment');
-
     Route::post('/payment/process-payment/{id}', [PaymentController::class, 'processPayment'])->name('processPayment');
-
-    Route::get('/finishedOrder',[OrderController::class, 'finishedOrder'])->name('finishedOrder');
 
 });

@@ -1,11 +1,11 @@
-{{--<!DOCTYPE html>--}}
-{{--<html lang="en">--}}
-{{--<head>--}}
-{{--    <meta charset="UTF-8">--}}
-{{--    <meta name="viewport" content="width=device-width, initial-scale=1.0">--}}
-{{--    <meta http-equiv="X-UA-Compatible" content="ie=edge">--}}
-{{--</head>--}}
-{{--<body>--}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
 
 <x-app-layout>
 
@@ -43,19 +43,18 @@
         <x-jet-button type="button"  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-success btn-block">Pay Article</x-jet-button>
     </div>
 </form>
+
 <script src="https://js.stripe.com/v3/"></script>
 <script>
-    const appearance = {
-        theme: 'stripe'
-    };
+
 
     var stripe = Stripe('{{ env('STRIPE_KEY') }}');
+
     // var stripe = Stripe('pk_test_51MbhuWBUHvpA09DtOQiKDCeiY3r65SPExwiLPQPVKiemBXJoBSYWMJK6PJ73oXwiwwNvEuXIC0cngQzYkaG8PWMw00RoSqG4x2');
-    var elements = stripe.elements(appearance);
+
     var style1 = {
         base: {
             color: '#32325d',
-            // fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
             fontSmoothing: 'antialiased',
             fontSize: '16px',
             '::placeholder': {
@@ -67,19 +66,11 @@
             iconColor: '#fa755a'
         }
     };
-    var card = elements.create('card', {hidePostalCode: true, style: style1});
-    card.mount('#card-element');
-    console.log(document.getElementById('card-element'));
-    card.addEventListener('change', function(event) {
-        var displayError = document.getElementById('card-errors');
-        if (event.error) {
-            displayError.textContent = event.error.message;
-        } else {
-            displayError.textContent = '';
-        }
-    });
+
+
     const cardHolderName = document.getElementById('card-holder-name');
     const cardButton = document.getElementById('card-button');
+
     const clientSecret = cardButton.dataset.secret;    cardButton.addEventListener('click', async (e) => {
         console.log("attempting");
         const { setupIntent, error } = await stripe.confirmCardSetup(
@@ -97,6 +88,23 @@
             paymentMethodHandler(setupIntent.payment_method);
         }
     });
+
+
+    var elements = stripe.elements({clientSecret: clientSecret});
+
+    var card = elements.create('card', { hidePostalCode: true, style:style1});
+    card.mount('#card-element');
+    console.log(document.getElementById('card-element'));
+    card.addEventListener('change', function(event) {
+        var displayError = document.getElementById('card-errors');
+        if (event.error) {
+            displayError.textContent = event.error.message;
+        } else {
+            displayError.textContent = '';
+        }
+    });
+
+
     function paymentMethodHandler(payment_method) {
         var form = document.getElementById('subscribe-form');
         var hiddenInput = document.createElement('input');
@@ -110,5 +118,5 @@
 
 </x-app-layout>
 
-{{--</body>--}}
-{{--</html>--}}
+</body>
+</html>
