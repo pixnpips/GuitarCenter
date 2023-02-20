@@ -27,7 +27,6 @@ use App\Models\Order;
 //});
 
 Route::get('/', [CategoryController::class,'WebShop'])->name('WebShop');
-
 Route::get('/showItems/{id}', [CategoryController::class,'showItems'])->name('showItems');
 
 //   ----------------- Diese Routen können nur von angemeldeten Usern betreten werden!!

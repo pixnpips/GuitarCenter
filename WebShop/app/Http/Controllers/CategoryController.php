@@ -6,7 +6,9 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Session;
+use App\Models\item;
 use Helper;
+use Illuminate\Support\Facades\Log;
 
 class CategoryController extends Controller
 {
@@ -35,9 +37,9 @@ class CategoryController extends Controller
         return view('WebShop',compact('categories'));
     }
 
-    public function showItems(Category $category){
-        $items=$category->items();
-        return view ('categories.showItems', compact('items'));
+    public function showItems($id){
+        $items=item::where('category_id', $id)->get();
+       return view ('categories.showItems', compact('items'));
     }
 
 

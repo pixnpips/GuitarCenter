@@ -47,7 +47,7 @@
                 {{$category->description}}
             </div>
                 <div>
-                    <a href="{{route('showItems',$category)}}"><img src="{{$category->img}}"></a>
+                    <a href="{{route('showItems',$category->id)}}"><img src="{{$category->img}}"></a>
                 </div>
         </div>
     @endforeach

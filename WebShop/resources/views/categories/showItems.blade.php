@@ -1,5 +1,6 @@
 <x-app-layout>
-@foreach ($items as $item)
+
+    @foreach ($items as $item)
 
     <div>
             <div class=" mx-30 my-10 inline-block bg-orange-200 " id="vlad1">
@@ -59,5 +60,6 @@
             </div>
         </div>
     </div>
+    @endforeach
 
 </x-app-layout>

@@ -18,6 +18,7 @@ class Category extends Model
         return $this->img;
     }
 
+
     public function items(){
         return $this->hasMany(item::class);
     }
