@@ -45,6 +45,26 @@
                                 <h2 class="mx-30 my-10 inline-block">{{$Order->status}}</h2>
                             </div>
                         </div>
+
+                        <div class="mx-30 my-10 inline-block" >
+                            <div class="mx-30 my-10 inline-block">
+                                <h2 > Bestelldatum</h2>
+                            </div>
+                            <div>
+                                <h2 class="mx-30 my-10 inline-block">{{$Order->created_at}}</h2>
+                            </div>
+                        </div>
+
+                        <div class="mx-30 my-10 inline-block" >
+                            <div class="mx-30 my-10 inline-block">
+                                <h2 >Zuletzt geändert:</h2>
+                            </div>
+                            <div>
+                                <h2 class="mx-30 my-10 inline-block">{{$Order->updated_at}}</h2>
+                            </div>
+                        </div>
+
+
                     </div>
                 @endforeach
             </div>

@@ -25,7 +25,7 @@ class Customer extends Model
     }
 
     protected $fillable = [
-        'name', 'street','postal','email','bday','password1'
+        'name', 'street','postal','email','bday'
     ];
 
     public function orders(){

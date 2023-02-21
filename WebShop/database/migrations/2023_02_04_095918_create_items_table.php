@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 45);
-            $table->string('desc', 250);
-            $table->float('price', 7,2);
+            $table->string('title', 100);
+            $table->string('desc', 1500);
+            $table->float('price', 10,2);
             $table->string('img1', 100)->nullable();
             $table->string('img2', 100)->nullable();
             $table->string('img3', 100)->nullable();
-            $table->integer('pcs')->nullable();
+            $table->bigInteger('pcs')->nullable();
             $table->foreignId('category_id')
                 ->constrained('categories')
                 ->onUpdate('cascade')

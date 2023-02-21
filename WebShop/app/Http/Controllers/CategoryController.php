@@ -27,8 +27,8 @@ class CategoryController extends Controller
 
     public function validateCategory(Request $request){
         $request->validate([
-            'name'=>'required',
-            'desc'=>'required',
+            'name'=>'required|max:100',
+            'desc'=>'required|max:1500',
         ]);
     }
 

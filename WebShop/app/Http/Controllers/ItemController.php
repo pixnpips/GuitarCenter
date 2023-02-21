@@ -27,9 +27,9 @@ class ItemController extends Controller
 
     public function validateit(Request $request){
         $request->validate([
-            'title' => 'required',
-            'desc' => 'required',
-            'price' => 'required|numeric',
+            'title' => 'required|max:100',
+            'desc' => 'required|max:1500',
+            'price' => 'required|numeric|max:999999',
             'pcs' => 'required|numeric',
         ]);
     }
@@ -58,6 +58,11 @@ class ItemController extends Controller
         Helper::prepareUploadItem($request);
         item::create($request->all());
         return redirect()->route('items.index')->with('success','Item created successfully.');
+    }
+
+    public function showC($id){
+        $item=item::all()->find($id,$id);
+        return view('items.showC',compact('item'));
     }
 
     /**

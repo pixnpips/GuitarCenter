@@ -1,6 +1,11 @@
 <x-app-layout>
-    @foreach ($items as $item)
 
+    <div>
+        <a href="{{ url()->previous() }}"> <x-jet-button>Back</x-jet-button></a>
+    </div>
+
+    @foreach ($items as $item)
+        <a class="flex flex-row justify-between" href="{{ route('showC',$item->id) }}">
     <div>
             <div class=" mx-30 my-10 inline-block bg-orange-200 " id="vlad1">
                 <div>
@@ -51,23 +56,26 @@
             <div>
                 <img src="{{$item->img1}}">
             </div>
-            <div>
-                <img src="{{$item->img2}}">
-            </div>
-            <div>
-                <img src="{{$item->img3}}">
-            </div>
+{{--            <div>--}}
+{{--                <img src="{{$item->img2}}">--}}
+{{--            </div>--}}
+{{--            <div>--}}
+{{--                <img src="{{$item->img3}}">--}}
+{{--            </div>--}}
         </div>
 
-        <div>
-            <a href="{{route('items.index') }}"> <x-jet-button>Back</x-jet-button></a>
-        </div>
 
-        <div>
-            <a href="{{route('customCreate',['id'=>$item->id])}}"><x-jet-button>Buy</x-jet-button></a>
-        </div>
+
+{{--        <div>--}}
+{{--            <a href="{{route('customCreate',['id'=>$item->id])}}"><x-jet-button>Buy</x-jet-button></a>--}}
+{{--        </div>--}}
 
     </div>
+        </a>
     @endforeach
+
+        <div>
+            <a href="{{ url()->previous() }}"> <x-jet-button>Back</x-jet-button></a>
+        </div>
 </x-app-layout>
 

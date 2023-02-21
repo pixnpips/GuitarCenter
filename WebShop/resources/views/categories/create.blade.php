@@ -6,8 +6,8 @@
 {{--                name="message" placeholder="{{ __('What\'s on your mind?') }}"--}}
 {{--                class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"--}}
 {{--            >{{ old('message') }}</textarea>--}}
-
-            <input type="text" name="name" placeholder="{{ __('Categoriy Name') }}"
+            <label for="name" class="col-md-4 col-form-label text-md-right"><strong>Category Name:</strong></label>
+            <input type="text" name="name" placeholder="{{ __('Category Name') }}"
                    class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
             >
             @error('name') <span class="error">{{ $message }}</span> @enderror

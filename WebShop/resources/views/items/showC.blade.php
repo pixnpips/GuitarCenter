@@ -1,4 +1,8 @@
 <x-app-layout>
+    <div>
+        <a href="{{ url()->previous() }}"> <x-jet-button>Back</x-jet-button></a>
+    </div>
+
     <div class="row">
         <div class="flex-row justify-between col-lg-12 margin-tb">
             <div >
@@ -14,12 +18,6 @@
                 {{$item->desc}}
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Category:</strong>
-                {{$item->category->name}}
-            </div>
-        </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -33,21 +31,8 @@
             <img src="{{$item->img3}}">
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Pieces:</strong>
-                {{ $item->pcs}}
-            </div>
-        </div>
-
-{{--        Payment Shit--}}
-
         <div>
             <a href="{{ url()->previous() }}"> <x-jet-button>Back</x-jet-button></a>
-
-            @if(Auth::check())
-            <a href="{{route('items.edit',$item->id)}}"><x-jet-button class="mt-4" >Edit</x-jet-button> </a>
-            @endif
         </div>
 
         <div>

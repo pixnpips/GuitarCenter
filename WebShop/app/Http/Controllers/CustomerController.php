@@ -31,14 +31,12 @@ class CustomerController extends Controller
 
     public function validateCust(Request $request){
         $request->validate([
-            'name' => 'required|alpha_dash',
-            'street' => 'required|alpha_dash',
-            'postal' => 'required|numeric|max:255',
+            'name' => 'required|regex:/[a-zA-Z\s]+/',
+            'street' => 'required|regex:/[a-zA-Z0-9\s]+/',
+            'postal' => 'required|numeric|digits:5',
             'email' => 'required',
             'bday' => 'required',
-            'password1' => 'required',
         ]);
-
     }
 
 

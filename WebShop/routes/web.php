@@ -36,6 +36,9 @@ Route::get('/payment/{id}', [PaymentController::class, 'charge'])->name('goToPay
 Route::post('/payment/process-payment/{id}', [PaymentController::class, 'processPayment'])->name('processPayment');
 Route::resource('orders', OrderController::class);
 
+Route::get('/showC/{id}', [ItemController::class, 'showC'])->name('showC');
+
+
 //   ----------------- Diese Routen können nur von angemeldeten Usern betreten werden!!
 
 Route::middleware([
@@ -53,9 +56,9 @@ Route::middleware([
 
     //----------------------hier sind unsere Default Ressource Controller Routen
 
-    Route::resource('items', ItemController::class);
-    Route::resource('customers', CustomerController::class);
 
+    Route::resource('customers', CustomerController::class);
+    Route::resource('items', ItemController::class);
     Route::resource('categories', CategoryController::class);
     Route::get('orders.index',[OrderController::class, 'index']);
 
