@@ -47,10 +47,9 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script>
 
-
-    var stripe = Stripe('{{ env('STRIPE_KEY') }}');
-
-    // var stripe = Stripe('pk_test_51MbhuWBUHvpA09DtOQiKDCeiY3r65SPExwiLPQPVKiemBXJoBSYWMJK6PJ73oXwiwwNvEuXIC0cngQzYkaG8PWMw00RoSqG4x2');
+    {{--var stripe = Stripe('{{ env('STRIPE_KEY') }}');--}}
+    // Hier ist der Stripe Key hardkodiert damit wir uns nicht einloggen müssen
+    var stripe = Stripe('pk_test_51MbhuWBUHvpA09DtOQiKDCeiY3r65SPExwiLPQPVKiemBXJoBSYWMJK6PJ73oXwiwwNvEuXIC0cngQzYkaG8PWMw00RoSqG4x2');
 
     var style1 = {
         base: {

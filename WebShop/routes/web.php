@@ -21,13 +21,20 @@ use App\Models\Order;
 */
 
 
-
+//Ursprüngliche Welcome Ansicht Laravel
 //Route::get('/', function () {
 //    return view('welcome');
 //});
 
 Route::get('/', [CategoryController::class,'WebShop'])->name('WebShop');
 Route::get('/showItems/{id}', [CategoryController::class,'showItems'])->name('showItems');
+Route::get('customCreate/{id}',[CustomerController::class, 'createC'])->name('customCreate');
+Route::POST('customers/continue',[CustomerController::class,'continue'])->name('continue');
+Route::get('/showOrder',[OrderController::class, 'showOrder'])->name('showOrder');
+Route::get('/finishedOrder',[OrderController::class, 'finishedOrder'])->name('finishedOrder');
+Route::get('/payment/{id}', [PaymentController::class, 'charge'])->name('goToPayment');
+Route::post('/payment/process-payment/{id}', [PaymentController::class, 'processPayment'])->name('processPayment');
+Route::resource('orders', OrderController::class);
 
 //   ----------------- Diese Routen können nur von angemeldeten Usern betreten werden!!
 
@@ -48,20 +55,8 @@ Route::middleware([
 
     Route::resource('items', ItemController::class);
     Route::resource('customers', CustomerController::class);
-    Route::resource('orders', OrderController::class);
+
     Route::resource('categories', CategoryController::class);
-
-
-//   Hier definieren wir die Post Route mit der wir die Artikel ID übergeben
-
-    Route::get('customCreate/{id}',[CustomerController::class, 'createC'])->name('customCreate');
-    Route::POST('customers/continue',[CustomerController::class,'continue'])->name('continue');
-
     Route::get('orders.index',[OrderController::class, 'index']);
-    Route::get('/showOrder',[OrderController::class, 'showOrder'])->name('showOrder');
-    Route::get('/finishedOrder',[OrderController::class, 'finishedOrder'])->name('finishedOrder');
-
-    Route::get('/payment/{id}', [PaymentController::class, 'charge'])->name('goToPayment');
-    Route::post('/payment/process-payment/{id}', [PaymentController::class, 'processPayment'])->name('processPayment');
 
 });

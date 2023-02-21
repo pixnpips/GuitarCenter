@@ -1,5 +1,4 @@
 <x-app-layout>
-
     @foreach ($items as $item)
 
     <div>
@@ -59,7 +58,16 @@
                 <img src="{{$item->img3}}">
             </div>
         </div>
+
+        <div>
+            <a href="{{route('items.index') }}"> <x-jet-button>Back</x-jet-button></a>
+        </div>
+
+        <div>
+            <a href="{{route('customCreate',['id'=>$item->id])}}"><x-jet-button>Buy</x-jet-button></a>
+        </div>
+
     </div>
     @endforeach
-
 </x-app-layout>
+
