@@ -1,8 +1,8 @@
-<h2>Product Overview</h2>
+<h2 class="text-2xl" >Product Overview</h2>
     <div class="row">
         <div class="flex-row justify-between col-lg-12 margin-tb">
             <div >
-                <strong>Item Number:</strong> {{$item->id}}  <strong>Model:</strong> {{ $item->title }}
+                <strong>Model:</strong> {{ $item->title }}
             </div>
         </div>
     </div>
@@ -14,12 +14,6 @@
                 {{$item->desc}}
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Category:</strong>
-                {{$item->category->name}}
-            </div>
-        </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -28,23 +22,8 @@
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Image 1:</strong>
-                {{ $item->img1}}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Image 2:</strong>
-                {{ $item->img2}}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Image 3:</strong>
-                {{ $item->img3}}
-            </div>
+        <div class="w-1/2">
+            <img class="w-1/2" src="{{$item->img1}}">
         </div>
 
     </div>

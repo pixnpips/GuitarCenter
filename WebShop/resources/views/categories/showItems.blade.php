@@ -1,81 +1,61 @@
 <x-app-layout>
 
-    <div>
-        <a href="{{ url()->previous() }}"> <x-jet-button>Back</x-jet-button></a>
+    <div class="mx-30 my-10 text-2xl col-xs-12 col-sm-12 col-md-12 ">
+        <a href="{{ route('WebShop') }}"> <x-jet-button>Back</x-jet-button></a>
+        <h1 class="mx-30 my-10 text-3xl" ><strong>{{$category->name}}</strong></h1>
     </div>
-
+    <div class="flex row">
     @foreach ($items as $item)
-        <a class="flex flex-row justify-between" href="{{ route('showC',$item->id) }}">
-    <div>
-            <div class=" mx-30 my-10 inline-block bg-orange-200 " id="vlad1">
+        <a class="w-1/3 p-4 hover:bg-slate-300" href="{{ route('showC',$item->id) }}">
+            <div class="">
                 <div>
-                    <h2 class="mx-30 my-10 inline-block">Item Number</h2>
+                    <h2 class=" ">Model</h2>
                 </div>
                 <div>
-                    <h2 class="mx-30 my-10 inline-block">{{$item->id}}</h2>
-                </div>
-            </div>
-            <div class="mx-30 my-10 inline-block">
-                <div>
-                    <h2 class="mx-30 my-10 inline-block">Model</h2>
-                </div>
-                <div>
-                    <h2 class="mx-30 my-10 inline-block" >{{$item->title}}</h2>
+                    <h2 class="" >{{$item->title}}</h2>
                 </div>
             </div>
-            <div class="mx-30 my-10 inline-block">
+            <div class="">
                 <div>
-                    <h2 class="mx-30 my-10 inline-block">Category</h2>
+                    <h2 class="">Category</h2>
                 </div>
                 <div>
-                    <h2 class="mx-30 my-10 inline-block" >{{$item->category->name}}</h2>
+                    <h2 class="" >{{$item->category->name}}</h2>
                 </div>
             </div>
-            <div class="mx-30 my-10 inline-block" >
-                <div class="mx-30 my-10 inline-block">
+            <div >
+                <div class="">
                     <h2 >Price</h2>
                 </div>
                 <div>
-                    <h2 class="mx-30 my-10 inline-block">{{$item->price}}</h2>
+                    <h2 class="">{{$item->price}}</h2>
                 </div>
 
             </div>
-            <div class="mx-30 my-10 inline-block" >
-                <div class="mx-30 my-10 inline-block">
+
+            @if(Auth::check())
+            <div class="" >
+                <div class="">
                     <h2 >Available</h2>
                 </div>
                 <div>
-                    <h2 class="mx-30 my-10 inline-block">{{$item->pcs}}</h2>
+                    <h2 class="">{{$item->pcs}}</h2>
                 </div>
             </div>
+            @endif
 
-        <div class="mx-30 my-10 inline-block" >
-            <div class="mx-30 my-10 inline-block">
-                <h2 >Pictures</h2>
+        <div class="" >
+            <div class="">
+                <img  src="{{$item->img1}}">
             </div>
-            <div>
-                <img src="{{$item->img1}}">
-            </div>
-{{--            <div>--}}
-{{--                <img src="{{$item->img2}}">--}}
-{{--            </div>--}}
-{{--            <div>--}}
-{{--                <img src="{{$item->img3}}">--}}
-{{--            </div>--}}
         </div>
 
-
-
-{{--        <div>--}}
-{{--            <a href="{{route('customCreate',['id'=>$item->id])}}"><x-jet-button>Buy</x-jet-button></a>--}}
-{{--        </div>--}}
-
-    </div>
         </a>
     @endforeach
 
+    </div>
         <div>
-            <a href="{{ url()->previous() }}"> <x-jet-button>Back</x-jet-button></a>
+            <a href="{{ route('WebShop') }}"> <x-jet-button>Back</x-jet-button></a>
         </div>
 </x-app-layout>
 

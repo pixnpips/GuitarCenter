@@ -1,8 +1,8 @@
-<h2>Customer Overview</h2>
+<h2 class="text-2xl">Customer</h2>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2 class="text-xl center ">Overview</h2>
+
                 <strong>Customer Id:</strong> {{$customer->id}}
                 <strong>Name: </strong>{{$customer->name}} </h2>
             </div>

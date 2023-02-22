@@ -1,15 +1,24 @@
 
 <x-app-layout>
-    <div>
-        <div class="pull-right">
-            <h2>Order Overview</h2>
+    <div class="p-4">
+        <div>
+            <div class="">
+                <h2 class="text-2xl">Your Order</h2>
+            </div>
+        </div>
+
+        <div class="flex row ">
+            <div class="w-3/12">
+                <div>@include('customers.overview')</div>
+                <a href="{{route('goToPayment', ['id'=>$item->id])}}"><x-jet-button>Proceed to Payment</x-jet-button></a>
+            </div>
+            <div class="w-1/2">
+                @include('items.overview')
+            </div>
+
         </div>
     </div>
 
-    <div>@include('customers.overview')</div>
-    <div>@include('items.overview')</div>
-
-    <a href="{{route('goToPayment', ['id'=>$item->id])}}"><x-jet-button>Go to Payment</x-jet-button></a> &nbsp;
 
 </x-app-layout>
 

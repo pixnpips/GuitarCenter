@@ -34,6 +34,9 @@ Route::get('/showOrder',[OrderController::class, 'showOrder'])->name('showOrder'
 Route::get('/finishedOrder',[OrderController::class, 'finishedOrder'])->name('finishedOrder');
 Route::get('/payment/{id}', [PaymentController::class, 'charge'])->name('goToPayment');
 Route::post('/payment/process-payment/{id}', [PaymentController::class, 'processPayment'])->name('processPayment');
+
+Route::get('/showItems/{id}', [CategoryController::class,'showItems'])->name('showItems');
+
 Route::resource('orders', OrderController::class);
 
 Route::get('/showC/{id}', [ItemController::class, 'showC'])->name('showC');

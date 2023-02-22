@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="text-xl font-semibold ">
             Welcome {{auth()->user()->name}} see the latest Activities:
         </h2>
     </x-slot>
@@ -14,53 +14,52 @@
 
             <div class=" bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 @foreach ($orders as $Order)
-                    <div class=" flex flex-row justify-between">
-                        <div class="  mx-30 my-10 inline-block bg-orange-200 " id="vlad1">
-                                <h2 class="mx-30 my-10 inline-block">Bestellnummer</h2>
-                                <h2 class="mx-30 my-10 inline-block">{{$Order->id}}</h2>
+                    <div class=" flex flex-row justify-start px-4  py-2">
+                        <div class="  w-40" id="vlad1">
+                                <h2 class="">Bestellnummer</h2>
+                                <h2 class="">{{$Order->id}}</h2>
                         </div>
-                        <div class="mx-30 my-10 ">
+                        <div class=" w-40 ">
                             <div>
-                                <h2 class="mx-30 my-10 inline-block">Kunde</h2>
+                                <h2 class="font-semibold">Kunde</h2>
                             </div>
                             <div>
-                                <h2 class="mx-30 my-10 inline-block" >{{$Order->customer->id}}</h2>
-                                <h2 class="mx-30 my-10 inline-block" >{{$Order->customer->name}}</h2>
-                            </div>
-                        </div>
-                        <div class="mx-30 my-10 inline-block" >
-                            <div class="mx-30 my-10 inline-block">
-                                <h2 >Article</h2>
-                            </div>
-                            <div>
-                                <h2 class="mx-30 my-10 inline-block">{{$Order->item->id}}</h2>
-                                <h2 class="mx-30 my-10 inline-block">{{$Order->item->title}}</h2>
+                                <h2 class="">{{$Order->customer->id}} {{$Order->customer->name}}</h2>
                             </div>
                         </div>
-                        <div class="mx-30 my-10 inline-block" >
-                            <div class="mx-30 my-10 inline-block">
-                                <h2 >Status</h2>
+                        <div class=" w-40 " >
+                            <div class="">
+                                <h2 class="font-semibold" >Article</h2>
                             </div>
                             <div>
-                                <h2 class="mx-30 my-10 inline-block">{{$Order->status}}</h2>
+                                <h2 class="">{{$Order->item->id}}</h2>
+                                <h2 class="">{{$Order->item->title}}</h2>
                             </div>
                         </div>
-
-                        <div class="mx-30 my-10 inline-block" >
-                            <div class="mx-30 my-10 inline-block">
-                                <h2 > Bestelldatum</h2>
+                        <div class=" w-40 " >
+                            <div class="">
+                                <h2  class="font-semibold" >Status</h2>
                             </div>
                             <div>
-                                <h2 class="mx-30 my-10 inline-block">{{$Order->created_at}}</h2>
+                                <h2 class="">{{$Order->status}}</h2>
                             </div>
                         </div>
 
-                        <div class="mx-30 my-10 inline-block" >
-                            <div class="mx-30 my-10 inline-block">
-                                <h2 >Zuletzt geändert:</h2>
+                        <div class=" w-40" >
+                            <div class="">
+                                <h2  class="font-semibold"> Bestelldatum</h2>
                             </div>
                             <div>
-                                <h2 class="mx-30 my-10 inline-block">{{$Order->updated_at}}</h2>
+                                <h2 class="">{{$Order->created_at}}</h2>
+                            </div>
+                        </div>
+
+                        <div class=" w-40" >
+                            <div class="">
+                                <h2  class="font-semibold" >Zuletzt geändert:</h2>
+                            </div>
+                            <div>
+                                <h2 class="">{{$Order->updated_at}}</h2>
                             </div>
                         </div>
 
@@ -79,29 +78,31 @@
 
             @foreach ($customers as $Customer)
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="flex flex-row justify-between hover:bg-gray-700 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                    <div class=" mx-30 my-10 inline-block bg-orange-200 " id="vlad1">
+                <div class="flex flex-row justify-start  w-full border-gray-300  rounded-md shadow-sm px-4  py-2">
+                    <div class=" w-3/12 " >
                         <div>
-                            <h2 class="mx-30 my-10 inline-block">Kundennummer</h2>
+                            <h2 class="">Kundennummer</h2>
                         </div>
                         <div>
-                            <h2 class="mx-30 my-10 inline-block">{{$Customer->id}}</h2>
-                        </div>
-                    </div>
-                    <div class="mx-30 my-10 inline-block">
-                        <div>
-                            <h2 class="mx-30 my-10 inline-block">Name</h2>
-                        </div>
-                        <div>
-                            <h2 class="mx-30 my-10 inline-block" >{{$Customer->name}}</h2>
+                            <h2 class="">{{$Customer->id}}</h2>
                         </div>
                     </div>
-                    <div class="mx-30 my-10 inline-block" >
-                        <div class="mx-30 my-10 inline-block">
+
+                    <div class=" w-3/12">
+                        <div>
+                            <h2 class="">Name</h2>
+                        </div>
+                        <div>
+                            <h2 class="" >{{$Customer->name}}</h2>
+                        </div>
+                    </div>
+
+                    <div class=" w-3/12" >
+                        <div class="">
                             <h2 >Birthday</h2>
                         </div>
                         <div>
-                            <h2 class="mx-30 my-10 inline-block">{{$Customer->bday}}</h2>
+                            <h2 class="">{{$Customer->bday}}</h2>
                         </div>
                     </div>
                 </div>

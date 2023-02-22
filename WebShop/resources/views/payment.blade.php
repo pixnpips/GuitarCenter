@@ -8,41 +8,58 @@
 <body>
 
 <x-app-layout>
+<div class="flex row">
+    <div class="p-4">
+        <form action="{{route('processPayment', [$id])}}" method="POST" id="subscribe-form">
 
-<form action="{{route('processPayment', [$id])}}" method="POST" id="subscribe-form">
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="subscription-option">
-                    <label for="plan-silver">
-                        <span class="plan-price">{{$product}}</span>
-                        <span class="plan-price">{{$price}}</span>
-                    </label>
+            <div>
+                <h2 class="text-2xl">Dear {{$user->name}}, please proceed the payment</h2>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="subscription-option">
+                            <label for="plan-silver">
+                                <span class="plan-price">Product: {{$product}}</span>
+                                <span class="plan-price">Price: {{$price}}</span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            <label for="card-holder-name">Card Holder Name</label>
+            <input id="card-holder-name" type="text" value="{{$user->name}}" disabled>
+            @csrf
+            <div class="form-row">
+                <label for="card-element"  class="w-96">Credit or debit card</label>
+                <div  id="card-element" class="w-96"> </div>
+                <!-- Used to display form errors. -->
+                <div id="card-errors" role="alert"></div>
+            </div>
+            <div class="stripe-errors"></div>
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}<br>
+                    @endforeach
+                </div>
+            @endif
+            <div class="form-group text-center">
+                <x-jet-button type="button"  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-success btn-block">Pay Article</x-jet-button>
+            </div>
+        </form>
+        <a href="{{ url()->previous() }}"><x-jet-button class="btn btn-lg btn-success btn-block">Back</x-jet-button></a>
     </div>
-    <label for="card-holder-name">Card Holder Name</label>
-    <input id="card-holder-name" type="text" value="{{$user->name}}" disabled>
-    @csrf
-    <div class="form-row">
-        <label for="card-element"  class="w-96">Credit or debit card</label>
-        <div  id="card-element" class="w-96"> </div>
-        <!-- Used to display form errors. -->
-        <div id="card-errors" role="alert"></div>
+    <div>
+
+
     </div>
-    <div class="stripe-errors"></div>
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                {{ $error }}<br>
-            @endforeach
-        </div>
-    @endif
-    <div class="form-group text-center">
-        <x-jet-button type="button"  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-success btn-block">Pay Article</x-jet-button>
-    </div>
-</form>
+
+</div>
+
+
+
 
 <script src="https://js.stripe.com/v3/"></script>
 <script>
