@@ -1,13 +1,29 @@
 <x-app-layout>
-    <div class="row">
-        <div class="flex-row justify-between col-lg-12 margin-tb">
+    <div class=" p-4">
+
+
+    <div class="p-4 flex row">
+        <div class="">
             <div >
                 <strong>Item Number:</strong> {{$item->id}}  <strong>Model:</strong> {{ $item->title }}
             </div>
         </div>
+        <div class=" flex row mx-4" >
+            <div>
+                <a href="{{ url()->previous() }}"> <x-jet-button>Back</x-jet-button></a>
+
+                @if(Auth::check())
+                    <a href="{{route('items.edit',$item->id)}}"><x-jet-button class="" >Edit</x-jet-button> </a>
+                @endif
+            </div>
+
+            <div class="mx-4">
+                <a href="{{route('customCreate',['id'=>$item->id])}}" ><x-jet-button class="bg-green-600 hover:bg-lime-400">Buy</x-jet-button></a>
+            </div>
+        </div>
     </div>
 
-    <div class="row">
+    <div class="p-4">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Description:</strong>
@@ -27,11 +43,6 @@
                 {{ $item->price}}
             </div>
         </div>
-        <div>
-            <img src="{{$item->img1}}">
-            <img src="{{$item->img2}}">
-            <img src="{{$item->img3}}">
-        </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -40,19 +51,20 @@
             </div>
         </div>
 
-{{--        Payment Shit--}}
 
-        <div>
-            <a href="{{ url()->previous() }}"> <x-jet-button>Back</x-jet-button></a>
-
-            @if(Auth::check())
-            <a href="{{route('items.edit',$item->id)}}"><x-jet-button class="mt-4" >Edit</x-jet-button> </a>
-            @endif
+        <div class="flex row ">
+            <div class="w-1/4   p-4 bg-slate-300 ">
+            <img src="{{$item->img1}}" class="my-auto">
+            </div>
+            <div class="w-1/4  p-4  mx-4 bg-slate-300">
+            <img src="{{$item->img2}}" class="my-auto">
+            </div>
+                <div class= "w-1/4  p-4 bg-slate-300">
+            <img src="{{$item->img3}}" class="my-auto">
+                </div>
         </div>
 
-        <div>
-            <a href="{{route('customCreate',['id'=>$item->id])}}"><x-jet-button>Buy</x-jet-button></a>
-        </div>
+    </div>
 
     </div>
 </x-app-layout>

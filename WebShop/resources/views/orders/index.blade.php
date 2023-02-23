@@ -1,76 +1,77 @@
 <x-app-layout>
 
-    <div class="pull-right">
-        <h2>Order Index</h2>
-    </div>
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
     @endif
 
+        <div class="text-left p-4">
+            <h1 class="text-2xl"> Order Overview </h1>
+        </div>
+
 {{--   Zunächst unnötig, da Kunde selbst bestellen kann--}}
 {{--        <a href="{{ route('orders.create') }}" > <x-jet-button class="mt-4" >New Order</x-jet-button> </a>--}}
 
     @foreach ($orders as $Order)
-            <a class="flex flex-row justify-between" href="{{ route('orders.edit',$Order->id) }}">
-                <div class="flex flex-row justify-between hover:bg-gray-700 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                    <div class=" mx-30 my-10 inline-block bg-orange-200 " id="vlad1">
+            <a class="flex flex-row  w-full " href="{{ route('orders.edit',$Order->id) }}">
+                <div class="flex flex-row justify-between hover:bg-slate-300 w-4/5  border-gray-300  focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                    <div class=" px-4 w-40" id="vlad1">
                         <div>
-                            <h2 class="mx-30 my-10 inline-block">Bestellnummer</h2>
+                            <h2 class="font-semibold">Bestellnummer</h2>
                         </div>
                         <div>
-                            <h2 class="mx-30 my-10 inline-block">{{$Order->id}}</h2>
-                        </div>
-                    </div>
-                    <div class="mx-30 my-10 inline-block">
-                        <div>
-                            <h2 class="mx-30 my-10 inline-block">Kunde</h2>
-                        </div>
-                        <div>
-                            <h2 class="mx-30 my-10 inline-block" >{{$Order->customer->id}}</h2>
-                            <h2 class="mx-30 my-10 inline-block" >{{$Order->customer->name}}</h2>
+                            <h2 class="">{{$Order->id}}</h2>
                         </div>
                     </div>
-                    <div class="mx-30 my-10 inline-block" >
-                        <div class="mx-30 my-10 inline-block">
-                            <h2 >Article</h2>
+                    <div class="px-4 w-40">
+                        <div>
+                            <h2 class="font-semibold">Kunde</h2>
                         </div>
                         <div>
-                            <h2 class="mx-30 my-10 inline-block">{{$Order->item->id}}</h2>
-                            <h2 class="mx-30 my-10 inline-block">{{$Order->item->title}}</h2>
+                            <h2 class="" >{{$Order->customer->id}}</h2>
+                            <h2 class="" >{{$Order->customer->name}}</h2>
+                        </div>
+                    </div>
+                    <div class="px-4 w-40" >
+                        <div class="">
+                            <h2 class="font-semibold" >Article</h2>
+                        </div>
+                        <div>
+                            <h2 class="">{{$Order->item->id}}</h2>
+                            <h2 class="">{{$Order->item->title}}</h2>
                         </div>
 
                     </div>
 
-                    <div class="mx-30 my-10 inline-block" >
-                        <div class="mx-30 my-10 inline-block">
-                            <h2 >Status</h2>
+                    <div class="px-4 w-40" >
+                        <div class="">
+                            <h2 class="font-semibold" >Status</h2>
                         </div>
                         <div>
-                            <h2 class="mx-30 my-10 inline-block">{{$Order->status}}</h2>
+                            <h2 class="">{{$Order->status}}</h2>
                         </div>
                     </div>
 
-                    <div class="mx-30 my-10 inline-block" >
-                        <div class="mx-30 my-10 inline-block">
-                            <h2 > Bestelldatum</h2>
+                    <div class="px-4 w-40" >
+                        <div class="">
+                            <h2 class="font-semibold" > Bestelldatum</h2>
                         </div>
                         <div>
-                            <h2 class="mx-30 my-10 inline-block">{{$Order->created_at}}</h2>
+                            <h2 class="">{{$Order->created_at}}</h2>
                         </div>
                     </div>
 
-                    <div class="mx-30 my-10 inline-block" >
-                        <div class="mx-30 my-10 inline-block">
-                            <h2 >Zuletzt geändert:</h2>
+                    <div class="px-4 w-40" >
+                        <div class="">
+                            <h2 class="font-semibold" >Zuletzt geändert:</h2>
                         </div>
                         <div>
-                            <h2 class="mx-30 my-10 inline-block">{{$Order->updated_at}}</h2>
+                            <h2 class="">{{$Order->updated_at}}</h2>
                         </div>
                     </div>
 
-                    <div class="flex flex-row ">
+                    <div class="flex flex-row p-4">
                         <a href="{{ route('orders.edit',$Order)}}" > <x-jet-button class="mt-4" >Edit</x-jet-button> </a>
                     </div>
                 </div>

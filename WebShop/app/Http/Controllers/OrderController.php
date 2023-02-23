@@ -43,9 +43,12 @@ class OrderController extends Controller
 
     public function finishedOrder(){
         $item=item::all()->find(session('buy'));
+        $item->pcs=$item->pcs-1;
+        $item->save();
         $customer=Customer::all()->find(session('customer'));
         return view('orders.finishedOrder',['item'=>$item, 'customer'=>$customer]);
     }
+
     /**
      * Store a newly created resource in storage.
      *

@@ -15,11 +15,11 @@
             <div class=" bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 @foreach ($orders as $Order)
                     <div class=" flex flex-row justify-start px-4  py-2">
-                        <div class="  w-40" id="vlad1">
+                        <div class="  w-40 px-2" >
                                 <h2 class="">Bestellnummer</h2>
                                 <h2 class="">{{$Order->id}}</h2>
                         </div>
-                        <div class=" w-40 ">
+                        <div class=" w-40 px-2 ">
                             <div>
                                 <h2 class="font-semibold">Kunde</h2>
                             </div>
@@ -27,7 +27,7 @@
                                 <h2 class="">{{$Order->customer->id}} {{$Order->customer->name}}</h2>
                             </div>
                         </div>
-                        <div class=" w-40 " >
+                        <div class=" w-40  px-2 " >
                             <div class="">
                                 <h2 class="font-semibold" >Article</h2>
                             </div>
@@ -36,7 +36,7 @@
                                 <h2 class="">{{$Order->item->title}}</h2>
                             </div>
                         </div>
-                        <div class=" w-40 " >
+                        <div class=" w-40 px-2" >
                             <div class="">
                                 <h2  class="font-semibold" >Status</h2>
                             </div>
@@ -45,7 +45,7 @@
                             </div>
                         </div>
 
-                        <div class=" w-40" >
+                        <div class=" w-40 px-2" >
                             <div class="">
                                 <h2  class="font-semibold"> Bestelldatum</h2>
                             </div>
@@ -54,7 +54,7 @@
                             </div>
                         </div>
 
-                        <div class=" w-40" >
+                        <div class=" w-40 px-2" >
                             <div class="">
                                 <h2  class="font-semibold" >Zuletzt geändert:</h2>
                             </div>
@@ -79,7 +79,7 @@
             @foreach ($customers as $Customer)
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="flex flex-row justify-start  w-full border-gray-300  rounded-md shadow-sm px-4  py-2">
-                    <div class=" w-3/12 " >
+                    <div class=" w-3/12 px-2 " >
                         <div>
                             <h2 class="">Kundennummer</h2>
                         </div>
@@ -88,7 +88,7 @@
                         </div>
                     </div>
 
-                    <div class=" w-3/12">
+                    <div class=" w-3/12 px-2 ">
                         <div>
                             <h2 class="">Name</h2>
                         </div>
@@ -97,7 +97,7 @@
                         </div>
                     </div>
 
-                    <div class=" w-3/12" >
+                    <div class=" w-3/12 px-2" >
                         <div class="">
                             <h2 >Birthday</h2>
                         </div>

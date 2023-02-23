@@ -1,8 +1,11 @@
 <x-guest-layout>
     <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+
+        <x-slot name="logo" class="text-center">
+
         </x-slot>
+
+        <img src="{{url('/GuitarCenterLogo.png')}}" class="my-2">
 
         <x-jet-validation-errors class="mb-4" />
 

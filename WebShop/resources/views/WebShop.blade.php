@@ -1,6 +1,13 @@
 <x-app-layout>
 
-<div class="top-0 right-0 px-6 py-4 sm:block text-right">
+<div class="top-0 right-0 p-4 sm:block text-right">
+
+    <div class="w-36">
+        <a href="{{URL('/')}}" class="w-36">
+            <img href="{{URL('/')}}" src="{{url('/GuitarCenterLogo.png')}}" class=" w-36">
+        </a>
+    </div>
+
     @auth
         <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
     @else

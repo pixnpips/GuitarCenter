@@ -4,44 +4,48 @@
             <p>{{ $message }}</p>
         </div>
     @endif
+        <div class="text-left p-4">
+            <h1 class="text-2xl"> Customer Overview </h1>
+        </div>
 
-        <a href="{{ route('customers.create') }}" > <x-jet-button class="mt-4" >New Customer</x-jet-button> </a>
-
+        <div class="text-left p-4">
+        <a href="{{ route('customers.create') }}" > <x-jet-button class="mt-4 bg-green-600 hover:bg-lime-400" >New Customer</x-jet-button> </a>
+        </div>
     @foreach ($customers as $Customer)
-            <a class="flex flex-row justify-between" href="{{ route('customers.show',$Customer->id) }}">
-                <div class="flex flex-row justify-between hover:bg-gray-700 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                    <div class=" mx-30 my-10 inline-block bg-orange-200 " id="vlad1">
+            <a class="flex flex-row  w-full" href="{{ route('customers.show',$Customer->id) }}">
+                <div class="flex  w-1/2 hover:bg-slate-300  border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                    <div class=" px-4 w-40" id="vlad1">
                         <div>
-                            <h2 class="mx-30 my-10 inline-block">Kundennummer</h2>
+                            <h2 class="font-semibold">Kundennummer</h2>
                         </div>
                         <div>
-                            <h2 class="mx-30 my-10 inline-block">{{$Customer->id}}</h2>
-                        </div>
-                    </div>
-                    <div class="mx-30 my-10 inline-block">
-                        <div>
-                            <h2 class="mx-30 my-10 inline-block">Name</h2>
-                        </div>
-                        <div>
-                            <h2 class="mx-30 my-10 inline-block" >{{$Customer->name}}</h2>
+                            <h2 class="">{{$Customer->id}}</h2>
                         </div>
                     </div>
-                    <div class="mx-30 my-10 inline-block" >
-                        <div class="mx-30 my-10 inline-block">
+                    <div class="px-4 w-40">
+                        <div>
+                            <h2 class="font-semibold">Name</h2>
+                        </div>
+                        <div>
+                            <h2 class="" >{{$Customer->name}}</h2>
+                        </div>
+                    </div>
+                    <div class="px-4 w-40" >
+                        <div class="font-semibold">
                             <h2 >Birthday</h2>
                         </div>
                         <div>
-                            <h2 class="mx-30 my-10 inline-block">{{$Customer->bday}}</h2>
+                            <h2 class="px-4">{{$Customer->bday}}</h2>
                         </div>
 
                     </div>
                     <div class="flex flex-row ">
-                        <a href="{{ route('customers.edit',$Customer)}}" > <x-jet-button class="mt-4" >Edit</x-jet-button> </a>
+                        <a href="{{ route('customers.edit',$Customer)}}" class="p-4" > <x-jet-button class="mt-4" >Edit</x-jet-button> </a>
 
-                        <form action="{{ route('customers.destroy',$Customer->id) }}" method="POST">
+                        <form action="{{ route('customers.destroy',$Customer->id) }}" class="p-4" method="POST">
                             @csrf
                             @method('DELETE')
-                            <a href="{{ route('customers.destroy',$Customer)}}" > <x-jet-button type="submit" class="mt-4" >Delete</x-jet-button> </a>
+                            <a href="{{ route('customers.destroy',$Customer)}}" > <x-jet-button type="submit" class="mt-4 bg-red-800 hover:bg-red-600 " >Delete</x-jet-button> </a>
                         </form>
                     </div>
 

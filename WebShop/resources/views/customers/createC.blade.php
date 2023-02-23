@@ -1,9 +1,15 @@
 <x-app-layout>
-    <div class="">
 
-        <h2> Please enter your Data to proceed</h2>
+    <div class="mx-4 w-36">
+        <a href="{{URL('/')}}" class=" p-4" >
+            <img src="{{url('/GuitarCenterLogo.png')}}" class=" ">
+        </a>
+    </div>
+    <div class="p-4 w-1/2 mx-auto">
 
-        <div class="w-1/2">
+        <h2 class="text-2xl"> Please enter your Data to proceed</h2>
+
+        <div class="">
             <form action="{{route('continue') }}" method="POST">
                 @csrf
 
@@ -49,7 +55,7 @@
 
 
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <x-jet-button type="submit" class="mt-4">Proceed to Order</x-jet-button>
+                    <x-jet-button type="submit" class=" my-2 bg-green-600 hover:bg-lime-400">Proceed to Order</x-jet-button>
                 </div>
 
             </form>
