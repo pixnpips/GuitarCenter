@@ -1,7 +1,7 @@
 <x-app-layout>
     @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
+        <div class=" p-4 bg-lime-500 text-center">
+            <p class="text-2xl">{{ $message }}</p>
         </div>
     @endif
 
@@ -14,7 +14,7 @@
 
     @foreach ($categories as $Category)
             <a class="flex flex-row  w-full " href="{{ route('categories.show',$Category->id) }}">
-                <div class="flex flex-row justify-between hover:bg-slate-300 w-1/2  border-gray-300  focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                <div class="flex flex-row justify-between hover:bg-slate-300 w-1/2 min-w-fit border-gray-300  focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
 
                     <div class="  px-4 w-40" id="vlad1">
                         <div>

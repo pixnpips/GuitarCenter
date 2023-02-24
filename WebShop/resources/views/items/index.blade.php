@@ -1,7 +1,7 @@
 <x-app-layout>
     @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
+        <div class=" p-4 bg-lime-500 text-center">
+            <p class="text-2xl">{{ $message }}</p>
         </div>
     @endif
 
@@ -14,7 +14,7 @@
 
     @foreach ($items as $item)
         <a class="flex flex-row  w-full "  href="{{ route('items.show',$item->id) }}">
-            <div class="flex flex-row w-3/5 hover:bg-slate-300  border-gray-300  focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+            <div class="flex flex-row w-3/5 min-w-fit hover:bg-slate-300  border-gray-300  focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                 <div class=" px-4 w-40" id="vlad1">
                     <div>
                         <h2 class="font-semibold">Item Number</h2>

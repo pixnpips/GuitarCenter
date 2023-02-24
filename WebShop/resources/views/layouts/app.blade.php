@@ -17,6 +17,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <script src="https://js.stripe.com/v3/"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
         <!-- Styles -->
 {{--        @livewireStyles--}}
@@ -51,6 +52,10 @@
         @stack('modals')
 
         @livewireScripts
+
+    <script>
+        $(document).ready(function(){$(".imgFull").click(function(){this.requestFullscreen()})});
+    </script>
     </body>
 
 </html>

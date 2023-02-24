@@ -1,8 +1,8 @@
 <x-app-layout>
 
     @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
+        <div class=" p-4 bg-lime-500 text-center">
+            <p class="text-2xl">{{ $message }}</p>
         </div>
     @endif
 
@@ -10,12 +10,16 @@
             <h1 class="text-2xl"> Order Overview </h1>
         </div>
 
-{{--   Zunächst unnötig, da Kunde selbst bestellen kann--}}
-{{--        <a href="{{ route('orders.create') }}" > <x-jet-button class="mt-4" >New Order</x-jet-button> </a>--}}
 
     @foreach ($orders as $Order)
             <a class="flex flex-row  w-full " href="{{ route('orders.edit',$Order->id) }}">
-                <div class="flex flex-row justify-between hover:bg-slate-300 w-4/5  border-gray-300  focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                <div class="flex flex-row justify-between min-w-fit hover:bg-slate-300 w-4/5  border-gray-300  focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm
+
+                  @if($Order->status==='delivered') bg-emerald-100
+                   @elseif($Order->status==='paid') bg-yellow-100
+                   @elseif($Order->status==='returned') bg-red-100
+                  @endif
+            ">
                     <div class=" px-4 w-40" id="vlad1">
                         <div>
                             <h2 class="font-semibold">Bestellnummer</h2>

@@ -39,14 +39,14 @@
             </div>
             <div class="flex row">
                 <div class="w-1/3 p-4">
-                    <img class="" src="{{$item->img1}}">
+                    <img class="imgFull" src="{{$item->img1}}">
                 </div >
                 <div class="w-1/3 p-4">
-                    <img src="{{$item->img2}}">
+                    <img class="imgFull" src="{{$item->img2}}">
                 </div>
 
                 <div class="w-1/3 p-4">
-                    <img src="{{$item->img3}}">
+                    <img class="imgFull" src="{{$item->img3}}">
                 </div>
             </div>
 

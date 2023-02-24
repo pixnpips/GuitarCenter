@@ -54,13 +54,13 @@
 
         <div class="flex row ">
             <div class="w-1/4   p-4 bg-slate-300 ">
-            <img src="{{$item->img1}}" class="my-auto">
+            <img class="imgFull" src="{{$item->img1}}" class="my-auto">
             </div>
             <div class="w-1/4  p-4  mx-4 bg-slate-300">
-            <img src="{{$item->img2}}" class="my-auto">
+            <img class="imgFull" src="{{$item->img2}}" class="my-auto">
             </div>
                 <div class= "w-1/4  p-4 bg-slate-300">
-            <img src="{{$item->img3}}" class="my-auto">
+            <img class="imgFull" src="{{$item->img3}}" class="my-auto">
                 </div>
         </div>
 

@@ -1,7 +1,7 @@
 <x-app-layout>
     @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
+        <div class=" p-4 bg-lime-500 text-center">
+            <p class="text-2xl">{{ $message }}</p>
         </div>
     @endif
         <div class="text-left p-4">
@@ -12,8 +12,8 @@
         <a href="{{ route('customers.create') }}" > <x-jet-button class="mt-4 bg-green-600 hover:bg-lime-400" >New Customer</x-jet-button> </a>
         </div>
     @foreach ($customers as $Customer)
-            <a class="flex flex-row  w-full" href="{{ route('customers.show',$Customer->id) }}">
-                <div class="flex  w-1/2 hover:bg-slate-300  border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+            <a class="flex flex-row w-full " href="{{ route('customers.show',$Customer->id) }}">
+                <div class="flex hover:bg-slate-300 min-w-fit w-3/5 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                     <div class=" px-4 w-40" id="vlad1">
                         <div>
                             <h2 class="font-semibold">Kundennummer</h2>

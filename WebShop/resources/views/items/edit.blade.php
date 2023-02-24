@@ -109,7 +109,7 @@
 
 
         </form>
-        <div class="pull-right">
+        <div class="" >
             <a href="{{ route('items.index') }}">
                 <x-jet-button class="mt-4">Back</x-jet-button>
             </a>
